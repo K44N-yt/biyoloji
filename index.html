@@ -44,301 +44,117 @@ body{min-height:100vh;overflow-x:hidden}
 .nav-icon{font-size:15px;line-height:1}
 .nav-divider{width:1px;height:26px;background:rgba(255,255,255,0.09);margin:0 2px;flex-shrink:0}
 
-/* ═══════════ ANA PAGE (dark) ═══════════ */
+/* ═══════════ ANA PAGE (light — matches subject pages) ═══════════ */
 #page-ana{
-  background:#0a0a0f;
-  font-family:"Space Grotesk",sans-serif;
-  color:#e8e8f0;
+  background:#f0f4f8;
+  font-family:'Segoe UI',Arial,sans-serif;
+  color:#1a1a2e;
 }
-#page-ana .bg-grid{
-  position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(99,102,241,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(99,102,241,.04) 1px,transparent 1px);
-  background-size:40px 40px;
-}
-#page-ana .bg-glow{
-  position:fixed;top:-200px;left:50%;transform:translateX(-50%);
-  width:800px;height:500px;
-  background:radial-gradient(ellipse,rgba(99,102,241,.13) 0%,transparent 70%);
-  z-index:0;pointer-events:none;
-}
+#page-ana .bg-grid{ display:none; }
+#page-ana .bg-glow{ display:none; }
 </style>
 
-<!-- ═══ ANA SAYFA STYLES ═══ -->
+/* ═══ ANA SAYFA STYLES (light theme) ═══ */
 <style>
 
 :root {
-  --bg: #0a0a0f;
-  --surface: #12121a;
-  --surface2: #1a1a26;
-  --border: rgba(255,255,255,0.07);
-  --text: #e8e8f0;
-  --muted: #7070a0;
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --surface2: #f8fafc;
+  --border: rgba(0,0,0,0.08);
+  --text: #1a1a2e;
+  --muted: #6b7280;
   --accent: #6366f1;
-  --accent2: #818cf8;
-  --green: #22c55e;
-  --amber: #f59e0b;
-  --red: #ef4444;
-  --pink: #ec4899;
-  --teal: #14b8a6;
-  --orange: #f97316;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Space Grotesk',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  overflow-x:hidden;
+  --accent2: #4f46e5;
+  --green: #16a34a;
+  --amber: #d97706;
+  --red: #dc2626;
+  --pink: #db2777;
+  --teal: #0f766e;
+  --orange: #ea580c;
 }
 
-/* ── BACKGROUND ── */
-.bg-grid{
-  position:fixed;inset:0;z-index:0;
-  background-image:
-    linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px);
-  background-size:40px 40px;
-  pointer-events:none;
-}
-.bg-glow{
-  position:fixed;top:-200px;left:50%;transform:translateX(-50%);
-  width:800px;height:500px;
-  background:radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, transparent 70%);
-  z-index:0;pointer-events:none;
-}
 
 /* ── LAYOUT ── */
 .wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px}
 
 /* ── HEADER ── */
-header{
-  padding:56px 0 40px;
-  text-align:center;
-}
-.header-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(99,102,241,0.15);
-  border:1px solid rgba(99,102,241,0.3);
-  color:var(--accent2);
-  font-size:13px;font-weight:500;
-  padding:6px 16px;border-radius:100px;
-  margin-bottom:24px;letter-spacing:.5px;
-}
-.header-badge .dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+header{padding:56px 0 40px;text-align:center;}
+.header-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.25);color:#4f46e5;font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;margin-bottom:24px;letter-spacing:.5px;}
+.header-badge .dot{width:7px;height:7px;background:#16a34a;border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-h1{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(2.2rem,5vw,3.6rem);
-  font-weight:800;
-  line-height:1.1;
-  background:linear-gradient(135deg,#fff 0%,var(--accent2) 60%,#a78bfa 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  margin-bottom:14px;
-}
-.subtitle{
-  color:var(--muted);font-size:1rem;
-  max-width:480px;margin:0 auto 40px;
-}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 50%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px;}
+.subtitle{color:#6b7280;font-size:1rem;max-width:480px;margin:0 auto 40px;}
 
 /* ── EXAM COUNTDOWN STRIP ── */
-.exam-strip{
-  display:flex;gap:12px;flex-wrap:wrap;justify-content:center;
-  margin-bottom:56px;
-}
-.exam-pill{
-  display:flex;align-items:center;gap:10px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:10px 16px;
-  font-size:13px;
-  transition:border-color .2s,transform .2s;
-  cursor:default;
-}
-.exam-pill:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-2px)}
-.exam-pill .date{color:var(--muted);font-size:11px;margin-top:2px}
-.exam-pill .subject-name{font-weight:600;font-size:14px}
+.exam-strip{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:48px;}
+.exam-pill{display:flex;align-items:center;gap:10px;background:#ffffff;border:1px solid rgba(0,0,0,0.09);border-radius:12px;padding:10px 16px;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:border-color .2s,transform .2s;cursor:default;font-family:'Segoe UI',Arial,sans-serif;}
+.exam-pill:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.exam-pill .date{color:#6b7280;font-size:11px;margin-top:2px}
+.exam-pill .subject-name{font-weight:700;font-size:13px;color:#1a1a2e}
 .exam-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 
 /* ── SECTION TITLE ── */
-.section-title{
-  font-family:'Syne',sans-serif;
-  font-size:1.5rem;font-weight:700;
-  margin-bottom:6px;
-}
-.section-sub{color:var(--muted);font-size:.9rem;margin-bottom:28px}
+.section-title{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:#1a1a2e;margin-bottom:6px;}
+.section-sub{color:#6b7280;font-size:.9rem;margin-bottom:24px}
 
 /* ── SUBJECT GRID ── */
-.subjects-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
-  gap:16px;
-  margin-bottom:60px;
-}
-
-.subject-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:20px;
-  overflow:hidden;
-  transition:transform .25s, border-color .25s, box-shadow .25s;
-  cursor:pointer;
-  position:relative;
-}
-.subject-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
-}
+.subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:52px;}
+.subject-card{background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:18px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;cursor:pointer;position:relative;box-shadow:0 2px 8px rgba(0,0,0,.05);font-family:'Segoe UI',Arial,sans-serif;}
+.subject-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.12);}
 .subject-card.ready:hover{border-color:var(--card-color)}
 .subject-card.ready:hover .card-glow{opacity:1}
-.subject-card.soon{opacity:.65}
-.subject-card.soon:hover{transform:none}
-
-.card-glow{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse at top, var(--card-glow) 0%, transparent 60%);
-  opacity:0;transition:opacity .3s;pointer-events:none;
-}
-.card-top{
-  padding:22px 22px 16px;
-  display:flex;align-items:flex-start;gap:14px;
-}
-.card-icon{
-  width:48px;height:48px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;flex-shrink:0;
-  background:var(--card-bg);
-}
+.subject-card.soon{opacity:.7}
+.subject-card.soon:hover{transform:none;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.card-glow{position:absolute;inset:0;background:radial-gradient(ellipse at top, var(--card-glow) 0%, transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none;}
+.card-top{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px;}
+.card-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;background:var(--card-bg);}
 .card-meta{flex:1}
-.card-subject{font-weight:700;font-size:1.05rem;margin-bottom:3px}
-.card-date{
-  font-size:12px;color:var(--muted);
-  display:flex;align-items:center;gap:5px;
-}
-.card-date svg{opacity:.6}
-.card-status{
-  font-size:11px;font-weight:600;
-  padding:3px 10px;border-radius:100px;
-  margin-left:auto;flex-shrink:0;align-self:flex-start;margin-top:2px;
-}
-.status-ready{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.25)}
-.status-soon{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.2)}
-.status-next{background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.3)}
-
-.card-topics{
-  padding:0 22px 16px;
-  display:flex;flex-wrap:wrap;gap:6px;
-}
-.topic-tag{
-  font-size:11px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  color:var(--muted);
-  padding:3px 10px;border-radius:6px;
-}
-
-.card-footer{
-  padding:14px 22px;
-  border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-}
-.card-action{
-  font-size:13px;font-weight:600;
-  color:var(--card-color);
-  display:flex;align-items:center;gap:6px;
-  text-decoration:none;
-}
+.card-subject{font-weight:700;font-size:1rem;margin-bottom:3px;color:#1a1a2e}
+.card-date{font-size:11px;color:#6b7280;display:flex;align-items:center;gap:5px;}
+.card-date svg{opacity:.5}
+.card-status{font-size:10px;font-weight:700;padding:3px 9px;border-radius:100px;margin-left:auto;flex-shrink:0;align-self:flex-start;margin-top:2px;}
+.status-ready{background:rgba(22,163,74,.12);color:#15803d;border:1px solid rgba(22,163,74,.2)}
+.status-soon{background:rgba(217,119,6,.1);color:#b45309;border:1px solid rgba(217,119,6,.18)}
+.status-next{background:rgba(99,102,241,.12);color:#4f46e5;border:1px solid rgba(99,102,241,.25)}
+.card-topics{padding:0 20px 14px;display:flex;flex-wrap:wrap;gap:6px;}
+.topic-tag{font-size:11px;background:#f1f5f9;border:1px solid #e2e8f0;color:#64748b;padding:3px 9px;border-radius:5px;}
+.card-footer{padding:12px 20px;border-top:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+.card-action{font-size:13px;font-weight:600;color:var(--card-color);display:flex;align-items:center;gap:6px;text-decoration:none;}
 .card-action svg{transition:transform .2s}
 .subject-card:hover .card-action svg{transform:translateX(4px)}
-.card-soru{font-size:12px;color:var(--muted)}
+.card-soru{font-size:11px;color:#9ca3af}
 
 /* ── EXAM SCHEDULE TABLE ── */
 .schedule-section{margin-bottom:60px}
-.schedule-table-wrap{
-  background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;
-}
-.schedule-table{width:100%;border-collapse:collapse}
-.schedule-table th{
-  padding:12px 18px;font-size:12px;font-weight:600;
-  color:var(--muted);text-align:left;
-  border-bottom:1px solid var(--border);
-  background:rgba(255,255,255,0.02);
-  text-transform:uppercase;letter-spacing:.5px;
-}
-.schedule-table td{
-  padding:12px 18px;font-size:13px;
-  border-bottom:1px solid var(--border);
-  vertical-align:middle;
-}
+.schedule-table-wrap{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.schedule-table{width:100%;border-collapse:collapse;font-family:'Segoe UI',Arial,sans-serif}
+.schedule-table th{padding:11px 16px;font-size:11px;font-weight:700;color:#6b7280;text-align:left;border-bottom:1px solid #f1f5f9;background:#fafafa;text-transform:uppercase;letter-spacing:.6px;}
+.schedule-table td{padding:11px 16px;font-size:13px;border-bottom:1px solid #f8fafc;vertical-align:middle;color:#1a1a2e}
 .schedule-table tr:last-child td{border-bottom:none}
-.schedule-table tr:hover td{background:rgba(255,255,255,0.02)}
-.subject-label{
-  display:inline-flex;align-items:center;gap:8px;
-  font-weight:600;
-}
+.schedule-table tr:hover td{background:#f8fafc}
+.subject-label{display:inline-flex;align-items:center;gap:8px;font-weight:600;}
 .subject-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.time-badge{
-  font-size:11px;background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.1);
-  padding:3px 8px;border-radius:6px;color:var(--muted);
-}
-.today-row td{background:rgba(99,102,241,0.06)!important}
-.past-row td{opacity:.45}
-.upcoming-badge{
-  font-size:10px;font-weight:600;
-  background:rgba(34,197,94,.15);color:#4ade80;
-  padding:2px 8px;border-radius:100px;border:1px solid rgba(34,197,94,.2);
-  margin-left:6px;
-}
-.next-badge{
-  font-size:10px;font-weight:600;
-  background:rgba(99,102,241,.15);color:#818cf8;
-  padding:2px 8px;border-radius:100px;border:1px solid rgba(99,102,241,.3);
-  margin-left:6px;
-}
+.time-badge{font-size:11px;background:#f1f5f9;border:1px solid #e2e8f0;padding:3px 8px;border-radius:5px;color:#64748b;}
+.today-row td{background:rgba(99,102,241,0.05)!important}
+.past-row td{opacity:.4}
+.upcoming-badge{font-size:10px;font-weight:700;background:rgba(22,163,74,.12);color:#15803d;padding:2px 7px;border-radius:100px;border:1px solid rgba(22,163,74,.18);margin-left:6px;}
+.next-badge{font-size:10px;font-weight:700;background:rgba(99,102,241,.1);color:#4f46e5;padding:2px 7px;border-radius:100px;border:1px solid rgba(99,102,241,.22);margin-left:6px;}
 
 /* ── FOOTER ── */
-footer{
-  border-top:1px solid var(--border);
-  padding:30px 0;text-align:center;
-  color:var(--muted);font-size:13px;
-}
+footer{border-top:1px solid #e2e8f0;padding:28px 0;text-align:center;color:#9ca3af;font-size:13px;background:#fff;font-family:'Segoe UI',Arial,sans-serif}
 
 /* ── MODAL ── */
-.modal-overlay{
-  position:fixed;inset:0;z-index:100;
-  background:rgba(0,0,0,.8);backdrop-filter:blur(8px);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity .25s;
-  padding:20px;
-}
+.modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;padding:20px;}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:32px;
-  max-width:480px;width:100%;
-  transform:translateY(20px);transition:transform .25s;
-}
+.modal{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:20px;padding:28px;max-width:420px;width:100%;transform:translateY(20px);transition:transform .25s;box-shadow:0 20px 60px rgba(0,0,0,.15)}
 .modal-overlay.open .modal{transform:translateY(0)}
-.modal h3{font-family:'Syne',sans-serif;font-size:1.4rem;margin-bottom:8px}
-.modal p{color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px}
-.modal-close{
-  background:rgba(255,255,255,0.08);border:1px solid var(--border);
-  color:var(--text);font-size:14px;font-weight:600;
-  padding:10px 24px;border-radius:10px;cursor:pointer;
-  transition:background .2s;
-}
-.modal-close:hover{background:rgba(255,255,255,0.12)}
+.modal h3{font-family:'Syne',sans-serif;font-size:1.3rem;margin-bottom:8px;color:#1a1a2e}
+.modal p{color:#6b7280;font-size:.9rem;line-height:1.6;margin-bottom:20px}
+.modal-close{background:#f1f5f9;border:1px solid #e2e8f0;color:#1a1a2e;font-size:14px;font-weight:600;padding:10px 22px;border-radius:10px;cursor:pointer;transition:background .2s;}
+.modal-close:hover{background:#e2e8f0}
 
-@media(max-width:600px){
-  .subjects-grid{grid-template-columns:1fr}
-  .exam-strip{flex-direction:column;align-items:center}
-}
+@media(max-width:600px){.subjects-grid{grid-template-columns:1fr}.exam-strip{flex-direction:column;align-items:center}}
 
 </style>
 
@@ -1053,6 +869,10 @@ footer{
   <div class="nav-divider"></div>
   <button class="nav-btn disabled" title="Yakında">
     <span class="nav-icon">⚛️</span><span>Fizik</span>
+  </button>
+  <div class="nav-divider"></div>
+  <button class="nav-btn" style="--nav-active:#f59e0b;color:rgba(255,255,255,0.7)" onclick="openPrintModal()">
+    <span class="nav-icon">🖨️</span><span>Çıktı Al</span>
   </button>
 </nav>
 
@@ -2169,6 +1989,22 @@ footer{
     🏆 <b>Sınav stratejisi:</b> Bu notları 3 kez oku. Boşluk doldurmaları kapalı kitap yaz. Eşlendirme tablolarını çiz. Açık uçlu cevapları yeniden kendi cümlelerinle yaz. Başarılar! 💪
   </div>
 </div>
+
+
+<div style="background:linear-gradient(90deg,#0f3460,#e94560);color:white;padding:14px 24px;border-radius:10px;margin:22px 0 12px;font-size:1.1em;font-weight:bold">🃏 Flash Kartlar — Biyoloji Hızlı Tekrar</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:30px" id="bioFlashGrid"></div>
+
+<div class="bolum" style="background:linear-gradient(90deg,#1a5276,#0f3460)">📝 Örnek Soru & Cevaplar</div>
+<div class="kart kirmizi">
+  <h3>❓ Sınavda Çıkabilecek Açık Uçlu Sorular</h3>
+  <div class="sq"><div class="q">Mutualizm ile kommensalizmi karşılaştırınız. Birer örnek veriniz.</div><div class="a">Mutualizm: Her iki tür de fayda sağlar (+/+). Örn: Bağırsak florası — insan; palamut balığı — orkinos. Kommensalizm: Bir tür fayda görür, diğeri etkilenmez (+/0). Örn: Karga-geyik; balık-köpek balığı; epifitler.</div></div>
+  <div class="sq"><div class="q">Popülasyon büyümesini sınırlandıran çevre direnci faktörlerini açıklayınız.</div><div class="a">Besin yetersizliği, su kıtlığı, yer yetersizliği, hastalıklar, parazitler, avcılar, iklim koşulları. Tüm bu faktörler birlikte popülasyonun taşıma kapasitesini aşmamasını sağlar.</div></div>
+  <div class="sq"><div class="q">ATP molekülünün yapısını açıklayınız ve hücresel enerji döngüsünü yazınız.</div><div class="a">ATP = Adenin (bazı) + Riboz (5C şeker) + 3 fosfat grubu. Bağ: Adenin-Riboz → glikozit; Riboz-fosfat → ester; fosfatlar arası → yüksek enerjili fosfat bağı. Döngü: Besinler → Hücresel solunum → ATP → Yaşamsal faaliyetler + Isı. ATP → ADP + Pi + Enerji (hidroliz).</div></div>
+  <div class="sq"><div class="q">Rekabet ile av-avcı ilişkisini karşılaştırınız.</div><div class="a">Rekabet (–/–): Her iki tür de zarar görür. Gause prensibi: Aynı nişte iki tür kalıcı yaşayamaz; biri dışlanır. Örn: P. aurelia — P. caudatum. Av-avcı (+/–): Avcı kazanır, av kaybeder. Karşılıklı evrimsel baskı yaratır; popülasyonlar dalgalı seyreder.</div></div>
+  <div class="sq"><div class="q">Primer süksesyon nedir? Başlangıcından klimaks topluluğuna sırasını yazınız.</div><div class="a">Cansız bir ortamda sıfırdan başlayan ekolojik topluluk oluşumu. Sıra: Kayalar → Likenler (öncü tür) → Yosunlar → Otsu bitkiler → Çalılar → Bodur ağaçlar → Büyük ağaçlar (klimaks). Yangın sonrası sekonder süksesyon başlar, daha hızlıdır.</div></div>
+</div>
+
+
 
 </div><!-- container sonu -->
 
@@ -3730,7 +3566,62 @@ document.getElementById('modal_ana').addEventListener('click',e=>{
 
 // ── BİYOLOJİ SCRIPT ──
 function runBioScript(){
-    // bio page - static content, no dynamic scripts needed
+  if(document.getElementById('bioFlashGrid') && document.getElementById('bioFlashGrid').children.length > 0) return;
+  const bioCards = [
+    // ENERJİ & METABOLİZMA
+    {konu:'⚡ Enerji', q:'Karbonhidratlar, yağlar ve proteinlerin kcal/g değerleri nedir?', a:'KH: 4 kcal/g | Yağ: 9 kcal/g | Protein: 4 kcal/g\n➤ Yağ neden fazla? Çünkü bol C-H bağı içerir (düşük oksijen içeriği)'},
+    {konu:'⚡ Enerji', q:'ATP\'nin açılımı ve yapısı nedir?', a:'Adenozin Trifosfat\nYapı: Adenin (azotlu baz) + Riboz (5C şeker) + 3 fosfat grubu\nBağlar: Adenin-Riboz=glikozit | Riboz-fosfat=ester | Fosfatlar arası=yüksek enerjili'},
+    {konu:'⚡ Enerji', q:'ATP → ADP dönüşümünde ne olur?', a:'ATP → ADP + Pi + Enerji (hidroliz)\nAçığa çıkan enerji yaşamsal faaliyetlerde kullanılır\nADP + Pi + Enerji → ATP (hücresel solunumla yenilenir)'},
+    {konu:'⚡ Enerji', q:'Pozitif enerji dengesi ne demektir? Sonucu nedir?', a:'Alınan enerji > Harcanan enerji\nSonuç: Yağ birikimi → Obezite → Diyabet, kalp hastalığı, inme riski\nTers: Negatif denge = kilo kaybı'},
+    {konu:'⚡ Enerji', q:'Metabolik atıklar nelerdir?', a:'CO₂ (akciğerlerden atılır) + H₂O + Isı\nIsı enerjiye tam dönüştürülemez → çevreye verilir\nDöngü: Kimyasal enerji → ATP → Mekanik/Elektrik + Isı'},
+    // EKOSİSTEM
+    {konu:'🌍 Ekosistem', q:'Ekolojik organizasyon hiyerarşisi nedir? (küçükten büyüğe)', a:'Organizma → Popülasyon → Komünite → Ekosistem → Biyosfer\n⚠️ Popülasyon = tek tür | Komünite = birden fazla tür'},
+    {konu:'🌍 Ekosistem', q:'Abiyotik faktörler nelerdir? Her birinin etkisi?', a:'Işık: fotosentez, fotoperiyot (göç, kış uykusu)\nSıcaklık: metabolizma hızı, dağılım\nSu: tüm yaşam için zorunlu, ozmotik basınç\nToprak: mineral içeriği, doku yapısı\nHava: CO₂, O₂, rüzgar'},
+    {konu:'🌍 Ekosistem', q:'Üretici, tüketici ve ayrıştırıcı farkı nedir?', a:'Üretici: Fotosentez yapan bitkiler (ototrof) → besin zincirinin başı\nTüketici: Hayvanlar (heterotrof) → birincil, ikincil, üçüncül\nAyrıştırıcı: Bakteri + mantarlar → organik → inorganic → döngü'},
+    // KOMÜNİTE ETKİLEŞİMLERİ
+    {konu:'🔗 Komünite', q:'5 tür birlikte yaşama ilişkisini tablo hâlinde söyle', a:'+/+ Mutualizm: Her iki tür fayda sağlar (liken, bağırsak florası)\n+/0 Kommensalizm: Biri fayda, diğeri etkilenmez (karga-geyik)\n+/- Parazitizm: Biri fayda, diğeri zarar (ökse otu-ağaç)\n0/- Amensalizm: Biri etkilenmez, diğeri zarar (çam-meşe)\n-/- Rekabet: Her iki tür zarar görür (Gause deneyi)'},
+    {konu:'🔗 Komünite', q:'Mutualizm örneklerini say (zorunlu ve isteğe bağlı)', a:'Zorunlu (obligat): Liken (alg+mantar) | Nodül (baklagil+azot bakterisi) | Termit-selüloz bakterileri\nİsteğe bağlı: Karga-geyik | İnsan-bağırsak florası (E.coli) | Palamut-orkinos | K/B vitamini sentezi'},
+    {konu:'🔗 Komünite', q:'Parazitizm örnekleri: İç ve dış parazit farkı nedir?', a:'İç parazit: Bağırsak solucanı, tenya — Üreme yüksek, sindirim sistemi körelmiş, eşey üremesi\nDış parazit: Kene, pire, bit — Konakçıya dışarıdan tutunur\nYarı parazit: Ökse otu (fotosentez yapar ama su çalar)\nTam parazit: Canavar otu (fotosentez yapmaz)'},
+    {konu:'🔗 Komünite', q:'Av-avcı ilişkisinde popülasyonlar nasıl dalgalanır?', a:'Av artar → Avcı artar → Av azalır → Avcı azalır → döngü\nBirbirleriyle ters fazlı dalgalanır\nÖrn: Tavşan-vaşak, geyik-kurt\nKarşılıklı evrimsel baskı (doğal seçilim) yaratır'},
+    {konu:'🔗 Komünite', q:'Gause prensibi (Rekabet dışlama) nedir?', a:'Aynı ekolojik nişte iki tür kalıcı olarak bir arada yaşayamaz\nBiri rekabette üstün gelir ve diğerini dışlar\nDeney: Paramecium aurelia, P. caudatum\'u dışladı\nÇözüm: Niş ayrımlaşması (farklı kaynak kullansalar bir arada olabilir)'},
+    {konu:'🔗 Komünite', q:'Süksesyon nedir? Primer ve sekonder farkı nedir?', a:'Süksesyon: Bir bölgede toplulukların zamanla değişmesi\nPrimer: Sıfırdan başlar (çıplak kaya) → LİKENLER öncü türdür → klimaks\nSekonder: Var olan ortamda yeniden başlar (yangın sonrası) → daha HIZLI\nKlimax topluluk: Kararlı son aşama'},
+    // POPÜLASYON
+    {konu:'📊 Popülasyon', q:'Taşıma kapasitesi ve çevre direnci nedir?', a:'Taşıma kapasitesi (K): Çevrenin destekleyebileceği maksimum birey sayısı\nÇevre direnci: Büyümeyi engelleyen faktörler (besin eksikliği, hastalık, avcı, yer)\nLojistik büyüme: S eğrisi → K\'ya yaklaştıkça yavaşlar\nEksponansiyel büyüme: J eğrisi → sınırsız ortamda'},
+    {konu:'📊 Popülasyon', q:'Popülasyon yoğunluğunu artıran ve azaltan faktörler neler?', a:'ARTIRANLAR: Doğum oranı ↑, göç (içe), uygun koşullar\nAZALTANLAR: Ölüm oranı ↑, göç (dışa), av, hastalık, rekabet\nİnsan etkisi: Habitat kaybı, aşırı avlanma, kirlilik → popülasyon azalır\nÖrn: Akdeniz foku → yavru ölümü → popülasyon düşüyor'},
+    {konu:'📊 Popülasyon', q:'Akdeniz fokunu neden korumamız gerekir? İlişkilendirme?', a:'Habitat kaybı (kirlilik+turizm) → yuvalama alanı yok → yavru ölümü → popülasyon azalır\nEkosistem rolü: Balık popülasyonunu dengeler\nBiyoçeşitlilik değeri\nÖzel koruma alanı gerektirir (Foça Özel Çevre Koruma Bölgesi)'},
+    // ÖZEL SORULAR
+    {konu:'📝 Sınav', q:'Liken hangi iki organizmadan oluşur? İlişki tipi nedir?', a:'Alg (fotosentez yapar → besin sağlar) + Mantar (su & mineral sağlar, korur)\nZorunlu (obligat) mutualizm (+/+)\nÖncü tür: Primer süksesyonda ilk yerleşen\nKaya üzerinde yaşayabilir → toprak oluşumuna katkı'},
+    {konu:'📝 Sınav', q:'Nodül nedir? Neden önemlidir?', a:'Baklagil (fasulye, mercimek, nohut) köklerinde Rhizobium bakterilerinin oluşturduğu şişkinlik\nİşlev: Atmosferdeki N₂\'yi bitkinin kullanabileceği NH₃\'e dönüştürür\nİlişki: Zorunlu mutualizm (+/+)\nTarımsal önemi: Toprak verimliliğini artırır, gübre azaltır'},
+    {konu:'📝 Sınav', q:'Bağırsak florası (E. coli ile) nasıl bir ilişkidir?', a:'Mutualizm (+/+) — İsteğe bağlı\nE. coli: K ve B vitamini sentezler (insan için faydalı)\nİnsan: E. coli\'ye sıcak, besin ortamı sağlar\nNot: E. coli antibiyotik sonrası azalır → vitamin eksikliği'},
+    {konu:'📝 Sınav', q:'Dengeli beslenme oranları nelerdir?', a:'Karbonhidrat: %55-60\nYağ: %25-30\nProtein: %10-15\nYağ en fazla ATP üretir (9 kcal/g) çünkü C-H bağı fazla\nKH ve protein eşit enerji verir (4 kcal/g)'},
+  ];
+  const bioGrid = document.getElementById('bioFlashGrid');
+  if(!bioGrid) return;
+  // Render flash cards
+  bioCards.forEach((c,i) => {
+    const el = document.createElement('div');
+    el.className = 'flash-card';
+    el.style.cssText = 'background:white;border-radius:12px;padding:0;box-shadow:0 2px 10px rgba(0,0,0,.08);border:1px solid #dee2e6;min-height:160px;cursor:pointer;perspective:600px;';
+    const qText = c.q.replace(/\n/g,'<br>');
+    const aText = c.a.replace(/\n/g,'<br>');
+    el.innerHTML = `<div style="position:relative;width:100%;height:100%;min-height:160px;transition:transform .5s;transform-style:preserve-3d;">
+      <div style="position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:center;background:white;">
+        <div style="font-size:.72em;font-weight:700;letter-spacing:.5px;color:#e94560;margin-bottom:6px;text-transform:uppercase">${c.konu} · Soru ${i+1}</div>
+        <div style="font-size:.92em;font-weight:600;color:#0f3460;line-height:1.4">${qText}</div>
+        <div style="font-size:.72em;color:#aaa;margin-top:8px;text-align:right">👆 Cevap için tıkla</div>
+      </div>
+      <div style="position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:center;background:#0f3460;color:white;transform:rotateY(180deg);">
+        <div style="font-size:.72em;font-weight:700;letter-spacing:.5px;color:rgba(233,69,96,0.8);margin-bottom:6px;text-transform:uppercase">${c.konu} · Cevap ${i+1}</div>
+        <div style="color:white;font-weight:400;font-size:.86em;line-height:1.55">${aText}</div>
+      </div>
+    </div>`;
+    el.addEventListener('click',()=>{
+      const inner = el.querySelector('div');
+      const cur = inner.style.transform;
+      inner.style.transform = cur === 'rotateY(180deg)' ? '' : 'rotateY(180deg)';
+    });
+    bioGrid.appendChild(el);
+  });
 }
 
 // ── COĞRAFYA SCRIPT ──
@@ -3739,38 +3630,48 @@ function runCogScript(){
   // Guard: only run once
   if(document.getElementById('flashGrid2') && document.getElementById('flashGrid2').children.length > 0) return;
   
-// Flash cards data
 const cogFlashCards = [
-  {q:"Zonguldak'ta hangi fonksiyon baskındır?", a:"Madencilik fonksiyonu (Kömür üretimi — Ereğli)"},
-  {q:"Eskişehir'de hâkim fonksiyon nedir?", a:"Eğitim ve kültürel fonksiyon + Turizm (Üniversiteler + rekreasyon alanları)"},
-  {q:"Köy nüfusu kaçın altında olmalıdır?", a:"2.000'den az nüfus"},
-  {q:"Gelişmiş ülkelerde hangi sektörün oranı yüksektir?", a:"Üçüncül sektör yüksek, birincil sektör düşük"},
-  {q:"GSYİH açılımı nedir?", a:"Gayrisafi Yurt İçi Hasıla — Ülke sınırları içinde üretilen tüm mal ve hizmetlerin piyasa değeri"},
-  {q:"Dördüncül sektörde CBS ne anlama gelir?", a:"Coğrafi Bilgi Sistemleri — Dördüncül sektör faaliyeti"},
-  {q:"Muğla hangi fonksiyonla öne çıkar?", a:"Turizm fonksiyonu (Eşsiz koy, körfez ve tesisleri)"},
-  {q:"Batman hangi fonksiyonu kazanmıştır?", a:"Petrolün bulunup işletilmesiyle Madencilik fonksiyonu"},
-  {q:"İstatistiki verilerde 4. ve 5. sektör nereye dahil edilir?", a:"Üçüncül (3.) sektöre dahil edilmektedir"},
-  {q:"Pamuk → İplik → Kumaş hangi sektördür?", a:"İkincil sektör (Sanayi faaliyeti — ham madde işleme)"},
-  {q:"Beşincil sektörün özelliği nedir?", a:"Yüksek seviyede karar verme. CEO, bakan, akademisyen gibi kişiler. Geleceğe yönelik stratejik kararlar."},
-  {q:"Gelişmiş ülkeler ham madde mi alır, satar mı?", a:"Ham madde ALIR, işlenmiş madde SATAR"},
-  {q:"Rotterdam hangi ulaşım fonksiyonuyla öne çıkar?", a:"Deniz yolu ulaşım fonksiyonu"},
-  {q:"Ataşehir (İstanbul) hangi fonksiyonu temsil eder?", a:"Ticaret fonksiyonu (İstanbul Finans Merkezi)"},
-  {q:"Adana'nın fonksiyonel dönüşümü nasıl gerçekleşti?", a:"Tarım → Sanayi → Ticaret → Eğitim/Sağlık/Ulaşım → Çok fonksiyonlu büyük il merkezi"},
+  // YERLEŞMELERİN FONKSİYONLARI
+  {konu:'🏙️ Fonksiyon', q:"Yerleşme fonksiyonu nedir? Kaç çeşit fonksiyon vardır?", a:"Bir yerleşmenin öne çıkan faaliyet türü.\n10 fonksiyon: Tarım, Madencilik, Sanayi, Ticaret, Turizm, Ulaşım, Sağlık, Eğitim-Kültürel, Yönetim, Askeri"},
+  {konu:'🏙️ Fonksiyon', q:"Zonguldak (Ereğli) — Batman — Muğla fonksiyonları neler?", a:"Ereğli/Zonguldak: Madencilik (kömür)\nBatman: Madencilik (petrol)\nMuğla: Turizm (koy ve körfezler)"},
+  {konu:'🏙️ Fonksiyon', q:"Ankara — Eskişehir — Ataşehir fonksiyonları neler?", a:"Ankara: Yönetim fonksiyonu (başkent)\nEskişehir: Eğitim-kültürel + Turizm\nAtaşehir (İstanbul): Ticaret (İstanbul Finans Merkezi)"},
+  {konu:'🏙️ Fonksiyon', q:"Rotterdam — Frankfurt — İskenderun'un ortak özelliği nedir?", a:"Ulaşım fonksiyonu:\nRotterdam: Deniz yolu (Avrupa'nın en büyük limanı)\nFrankfurt: Hava yolu\nİskenderun: Hava + deniz ulaşım merkezi"},
+  {konu:'🏙️ Fonksiyon', q:"Köy, kasaba ve şehrin nüfus sınırları nelerdir?", a:"Köy: 2.000'den az\nKasaba: 2.000 – 20.000\nŞehir: 20.000'den fazla (Türkiye'de il merkezi statüsü)"},
+  {konu:'🏙️ Fonksiyon', q:"Adana'nın fonksiyonel dönüşümünü açıkla", a:"Tarım → Sanayi → Ticaret → Eğitim/Sağlık/Ulaşım → Çok fonksiyonlu büyük il merkezi\n➤ Zamanla fonksiyon çeşitlenir (dönüşüm)"},
+  {konu:'🏙️ Fonksiyon', q:"Polatlı (Ankara) — Çarşamba (Samsun) ne fonksiyonuna örnektir?", a:"İkisi de Tarım fonksiyonu — verimli ova/delta konumunda"},
+  // EKONOMİK SEKTÖRLER
+  {konu:'⚙️ Sektör', q:"5 ekonomik sektörü sırasıyla örneklerle açıkla", a:"1. BİRİNCİL: Tarım, hayvancılık, balıkçılık, ormancılık, madencilik\n2. İKİNCİL: Sanayi, imalat (ham maddeyi işleme)\n3. ÜÇÜNCÜL: Hizmet sektörü (ticaret, sağlık, eğitim, turizm)\n4. DÖRDÜNCÜL: Bilgi-teknoloji (CBS, AR-GE, yazılım, grafik tasarım)\n5. BEŞİNCİL: Üst düzey karar alma (CEO, bakan, akademisyen)"},
+  {konu:'⚙️ Sektör', q:"İstatistiki verilerde 4. ve 5. sektör nereye dahil edilir?", a:"Üçüncül (3.) sektöre dahil edilmektedir\n⚠️ SINAV TUZAĞI: Ayrı sayılmaz, istatistiklerde 3. sektörün içinde"},
+  {konu:'⚙️ Sektör', q:"Pamuk → İplik → Kumaş → Konfeksiyon hangi sektördür?", a:"İkincil sektör (sanayi/imalat)\nHam maddeyi (pamuk) işleyerek katma değer katar"},
+  {konu:'⚙️ Sektör', q:"CBS ne anlama gelir? Hangi sektördedir?", a:"Coğrafi Bilgi Sistemleri — Dördüncül sektör\nDiğer 4. sektör: AR-GE, yazılım geliştirme, grafik tasarım"},
+  {konu:'⚙️ Sektör', q:"Beşincil sektörü diğerlerinden ayıran özellik nedir?", a:"Üst düzey karar alma ve stratejik yönetim\nKimler: CEO, bakan, general, rektör, üst yöneticiler\nGeleceğe yönelik kararlar alır (stratejik planlama)"},
+  // GELİŞMİŞLİK
+  {konu:'🌐 Gelişmişlik', q:"Gelişmiş ve az gelişmiş ülkelerin sektör profili nedir?", a:"GELİŞMİŞ: Birincil ↓ düşük | Üçüncül ↑ yüksek | Ham madde ALIR, işlenmiş SATAR\nAZ GELİŞMİŞ: Birincil ↑ yüksek | Üçüncül ↓ düşük | Ham madde SATAR, işlenmiş ALIR"},
+  {konu:'🌐 Gelişmişlik', q:"GSYİH nedir? Gelişmişlik göstergesi olarak ne söyler?", a:"Gayrisafi Yurt İçi Hasıla: Ülke sınırları içinde üretilen tüm mal ve hizmetlerin piyasa değeri\nGelişmiş: GSYİH/kişi yüksek, hizmet sektörü ağırlıklı\nAz gelişmiş: GSYİH/kişi düşük, tarım ağırlıklı"},
+  {konu:'🌐 Gelişmişlik', q:"Grafik/tabloda bir ülkenin gelişmişlik düzeyini nasıl anlarsın?", a:"Birincil sektör oranı DÜŞÜK → Gelişmiş\nBirincil sektör oranı YÜKSEK → Az gelişmiş\nÜçüncül sektör oranı yüksek → Gelişmiş\n➤ İstatistikte 4. ve 5. → 3. sektöre dahil, bunu unutma!"},
+  // ÖRNEK SORU TARZINDA
+  {konu:'📝 Sınav', q:"Bir yerleşmenin birden fazla fonksiyonu olabilir mi? Örnekle açıkla.", a:"Evet! Büyük şehirlerde fonksiyon çeşitlenir.\nİstanbul: Ticaret + Sanayi + Turizm + Eğitim + Sağlık + Ulaşım\nEskişehir: Eğitim-kültürel + Turizm + Sanayi + Ulaşım (demir yolu)"},
+  {konu:'📝 Sınav', q:"Sanayi fonksiyonuna 3 örnek ver", a:"Kocaeli (İzmit): Otomotiv ve kimya sanayisi\nBursa: Tekstil ve otomotiv\nAdana: Tekstil sanayisi\nKarabük: Demir-çelik sanayisi"},
+  {konu:'📝 Sınav', q:"Oxford — Cambridge — Eskişehir'in ortak fonksiyonu nedir?", a:"Eğitim ve kültürel fonksiyon (üniversite şehirleri)\nEskişehir: Anadolu Üniversitesi + Osmangazi Üniversitesi + ESKİŞEHİR Teknik"},
+  {konu:'📝 Sınav', q:"İkincil sektörde neler değil neler var? (dikkat edilecek)", a:"VAR: Maden işleme, gıda sanayisi, tekstil, inşaat, elektrik üretimi\nYOK: Ham maden çıkarma (birincil!), yazılım (dördüncül), ticaret (üçüncül)\n⚠️ Hidroelektrik enerji üretimi = İkincil sektör (ham maddeyi işleme)"},
 ];
 
 const cogFlashGrid = document.getElementById('flashGrid2');
+if(!cogFlashGrid) return;
 cogFlashCards.forEach((c,i) => {
   const el = document.createElement('div');
   el.className = 'flash-card';
+  const qText = c.q.replace(/\n/g,'<br>');
+  const aText = c.a.replace(/\n/g,'<br>');
   el.innerHTML = `<div class="flash-inner">
     <div class="flash-front">
-      <div class="flash-label">Soru ${i+1}</div>
-      <div class="flash-q">${c.q}</div>
+      <div class="flash-label" style="color:#2980b9;font-size:.72em;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px">${c.konu} · Soru ${i+1}</div>
+      <div class="flash-q">${qText}</div>
       <div class="flash-hint">👆 Cevap için tıkla</div>
     </div>
     <div class="flash-back">
-      <div class="flash-label">Cevap ${i+1}</div>
-      <div class="flash-q">${c.a}</div>
+      <div class="flash-label" style="color:rgba(41,128,185,0.7);font-size:.72em;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px">${c.konu} · Cevap ${i+1}</div>
+      <div class="flash-q" style="font-weight:400;font-size:.88em;line-height:1.55">${aText}</div>
     </div>
   </div>`;
   el.addEventListener('click',()=>el.classList.toggle('flipped'));
@@ -3891,5 +3792,600 @@ window.addEventListener('DOMContentLoaded', () => {
   runAnaScript();
 });
 </script>
+
+<!-- ══════════════════════════════════════
+     PRINT / PDF EXPORT SYSTEM
+══════════════════════════════════════ -->
+<style>
+/* ── PRINT MODAL OVERLAY ── */
+#print-modal {
+  position:fixed;inset:0;z-index:99998;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+  padding:20px;font-family:'Segoe UI',Arial,sans-serif;
+}
+#print-modal.open{opacity:1;pointer-events:all}
+#print-modal-box {
+  background:#fff;border-radius:24px;
+  padding:36px;max-width:520px;width:100%;
+  transform:translateY(24px);transition:transform .3s;
+  box-shadow:0 40px 100px rgba(0,0,0,.25);
+  position:relative;
+}
+#print-modal.open #print-modal-box{transform:translateY(0)}
+#print-modal h2{font-size:1.5rem;font-weight:700;color:#1a1a2e;margin-bottom:6px}
+#print-modal p{color:#6b7280;font-size:.88rem;margin-bottom:24px;line-height:1.5}
+.print-subject-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.print-subject-btn{
+  display:flex;align-items:center;gap:10px;
+  background:#f8fafc;border:2px solid #e2e8f0;
+  border-radius:12px;padding:12px 14px;cursor:pointer;
+  transition:all .18s;font-size:.88rem;font-weight:600;
+  color:#1a1a2e;text-align:left;
+}
+.print-subject-btn:hover{border-color:var(--ps-color);background:var(--ps-bg);transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.print-subject-btn.selected{border-color:var(--ps-color);background:var(--ps-bg);box-shadow:0 0 0 3px var(--ps-shadow)}
+.print-subject-btn .ps-icon{font-size:1.4rem;line-height:1}
+.print-subject-btn .ps-label{flex:1}
+.print-subject-btn .ps-check{width:18px;height:18px;border-radius:50%;border:2px solid #d1d5db;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s}
+.print-subject-btn.selected .ps-check{background:var(--ps-color);border-color:var(--ps-color);color:white;font-size:.7rem}
+.print-actions{display:flex;gap:10px;justify-content:flex-end}
+.print-cancel-btn{background:#f1f5f9;border:1px solid #e2e8f0;color:#374151;padding:10px 20px;border-radius:10px;cursor:pointer;font-size:.88rem;font-weight:600;transition:.15s}
+.print-cancel-btn:hover{background:#e2e8f0}
+.print-go-btn{background:#1a1a2e;color:white;border:none;padding:10px 24px;border-radius:10px;cursor:pointer;font-size:.88rem;font-weight:700;transition:.15s;display:flex;align-items:center;gap:7px}
+.print-go-btn:hover{background:#2d2d4e;transform:translateY(-1px)}
+.print-go-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.print-tip{background:#fefce8;border:1px solid #fef08a;border-radius:10px;padding:10px 14px;font-size:.8rem;color:#713f12;margin-bottom:20px;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+
+/* ── PRINT PREVIEW WINDOW ── */
+#print-preview-overlay {
+  position:fixed;inset:0;z-index:99999;
+  background:#374151;
+  display:none;overflow-y:auto;
+}
+#print-preview-overlay.open{display:block}
+#print-preview-toolbar {
+  position:fixed;top:0;left:0;right:0;z-index:100000;
+  background:#1f2937;color:white;
+  padding:12px 24px;display:flex;align-items:center;gap:12px;
+  box-shadow:0 2px 12px rgba(0,0,0,.4);
+  font-family:'Segoe UI',Arial,sans-serif;
+}
+#print-preview-toolbar h3{font-size:.9rem;font-weight:600;flex:1}
+.ptb-btn {
+  padding:8px 18px;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;border:none;transition:.15s;font-family:inherit;
+}
+.ptb-print{background:#4f46e5;color:white}
+.ptb-print:hover{background:#3730a3}
+.ptb-close{background:rgba(255,255,255,.1);color:white}
+.ptb-close:hover{background:rgba(255,255,255,.2)}
+#print-preview-pages{
+  padding:80px 24px 40px;
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+}
+.print-page {
+  background:white;
+  width:210mm;min-height:297mm;
+  padding:16mm 18mm 20mm;
+  box-shadow:0 4px 30px rgba(0,0,0,.3);
+  border-radius:4px;
+  font-family:'Segoe UI',Arial,sans-serif;
+  font-size:9.5pt;line-height:1.5;color:#1a1a2e;
+  position:relative;overflow:hidden;
+  page-break-after:always;
+}
+.print-page-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:10px;margin-bottom:14px;
+  border-bottom:2.5px solid var(--pp-color,#6366f1);
+}
+.print-page-header .pp-title{font-size:14pt;font-weight:800;color:var(--pp-color,#6366f1)}
+.print-page-header .pp-sub{font-size:8pt;color:#6b7280;text-align:right;line-height:1.4}
+.print-page-footer{
+  position:absolute;bottom:12mm;left:18mm;right:18mm;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:7.5pt;color:#9ca3af;border-top:1px solid #f1f5f9;padding-top:6px;
+}
+.pp-section-title{
+  font-size:10pt;font-weight:700;color:var(--pp-color,#1a1a2e);
+  margin:12px 0 6px;padding:5px 10px;
+  background:var(--pp-bg,#f1f5f9);border-radius:6px;border-left:3px solid var(--pp-color,#6366f1);
+}
+.pp-table{width:100%;border-collapse:collapse;font-size:8.5pt;margin:6px 0}
+.pp-table th{background:var(--pp-color,#1a1a2e);color:white;padding:5px 8px;text-align:left;font-size:8pt}
+.pp-table td{padding:4px 8px;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.pp-table tr:nth-child(even) td{background:#f9fafb}
+.pp-card{background:#f9fafb;border-radius:7px;padding:10px 12px;margin:5px 0;border-left:3px solid var(--pp-color,#6366f1)}
+.pp-card strong{color:var(--pp-color,#1a1a2e);display:block;margin-bottom:2px;font-size:8.5pt}
+.pp-grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pp-grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.pp-mini{background:#f9fafb;border:1px solid #e5e7eb;border-radius:5px;padding:7px 9px;font-size:8pt}
+.pp-mini b{display:block;color:var(--pp-color,#1a1a2e);margin-bottom:2px;font-size:7.5pt}
+.pp-uyari{background:#fff7ed;border-left:3px solid #f97316;padding:7px 10px;border-radius:5px;font-size:8pt;margin:5px 0}
+.pp-bilgi{background:#f0fdf4;border-left:3px solid #22c55e;padding:7px 10px;border-radius:5px;font-size:8pt;margin:5px 0}
+.pp-qa{background:white;border:1px solid #e5e7eb;border-radius:6px;padding:9px 11px;margin:5px 0}
+.pp-qa .ppq{font-weight:700;color:var(--pp-color,#1a1a2e);margin-bottom:4px;font-size:8.5pt}
+.pp-qa .ppa{background:#f0fdf4;border-left:2px solid #22c55e;padding:5px 8px;border-radius:4px;font-size:8pt}
+.pp-flash-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin:6px 0}
+.pp-flash-card{border:1.5px solid #e5e7eb;border-radius:7px;padding:8px 10px;font-size:8pt;min-height:60px}
+.pp-flash-card .ppfc-q{font-weight:700;color:var(--pp-color,#1a1a2e);margin-bottom:4px;font-size:7.5pt;border-bottom:1px dashed #e5e7eb;padding-bottom:3px}
+.pp-flash-card .ppfc-a{color:#374151;font-size:7.5pt;line-height:1.4}
+
+/* ── ACTUAL @media print ── */
+@media print {
+  @page { size: A4; margin: 0; }
+  body > *:not(#print-preview-overlay){ display:none!important }
+  #print-preview-overlay{
+    position:static!important;background:white!important;
+    display:block!important;overflow:visible!important;
+  }
+  #print-preview-toolbar{ display:none!important }
+  #print-preview-pages{ padding:0!important;gap:0!important;display:block!important; }
+  .print-page{
+    box-shadow:none!important;border-radius:0!important;
+    page-break-after:always;break-after:page;width:210mm!important;
+  }
+  .print-page:last-child{ page-break-after:avoid;break-after:avoid }
+}
+
+@media (max-width:750px){
+  .print-page{width:100%;min-height:auto;padding:10mm 8mm}
+  .pp-grid2,.pp-grid3,.pp-flash-grid{grid-template-columns:1fr}
+}
+</style>
+
+<!-- PRINT MODAL HTML -->
+<div id="print-modal">
+  <div id="print-modal-box">
+    <h2>🖨️ Çıktı Al / PDF Kaydet</h2>
+    <p>Hangi dersin notlarını çıktı almak istiyorsun? Seç ve devam et.</p>
+    <div class="print-tip">
+      💡 <span>Sayfalara bölünmüş, düzgün biçimlendirilmiş çıktı oluşturulacak. Tarayıcının yazdırma diyaloğundan <b>"PDF olarak kaydet"</b> seçeneğini kullanarak PDF'e de dönüştürebilirsin.</span>
+    </div>
+    <div class="print-subject-grid">
+      <button class="print-subject-btn" onclick="selectPrintSubject(this,'bio')" style="--ps-color:#22c55e;--ps-bg:rgba(34,197,94,0.07);--ps-shadow:rgba(34,197,94,0.2)">
+        <span class="ps-icon">🧬</span><span class="ps-label">Biyoloji</span><span class="ps-check"></span>
+      </button>
+      <button class="print-subject-btn" onclick="selectPrintSubject(this,'cog')" style="--ps-color:#3b82f6;--ps-bg:rgba(59,130,246,0.07);--ps-shadow:rgba(59,130,246,0.2)">
+        <span class="ps-icon">🌍</span><span class="ps-label">Coğrafya</span><span class="ps-check"></span>
+      </button>
+      <button class="print-subject-btn" onclick="selectPrintSubject(this,'fel')" style="--ps-color:#7c3aed;--ps-bg:rgba(124,58,237,0.07);--ps-shadow:rgba(124,58,237,0.2)">
+        <span class="ps-icon">🤔</span><span class="ps-label">Felsefe</span><span class="ps-check"></span>
+      </button>
+      <button class="print-subject-btn" onclick="selectPrintSubject(this,'din')" style="--ps-color:#14b8a6;--ps-bg:rgba(20,184,166,0.07);--ps-shadow:rgba(20,184,166,0.2)">
+        <span class="ps-icon">☪️</span><span class="ps-label">Din Kültürü</span><span class="ps-check"></span>
+      </button>
+    </div>
+    <div class="print-actions">
+      <button class="print-cancel-btn" onclick="closePrintModal()">İptal</button>
+      <button class="print-go-btn" id="print-go-btn" disabled onclick="startPrint()">
+        <span>📄</span> Önizleme Oluştur
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- PRINT PREVIEW OVERLAY -->
+<div id="print-preview-overlay">
+  <div id="print-preview-toolbar">
+    <h3 id="ppt-title">📄 Çıktı Önizleme</h3>
+    <button class="ptb-btn ptb-close" onclick="closePrintPreview()">✕ Kapat</button>
+    <button class="ptb-btn ptb-print" onclick="window.print()">🖨️ Yazdır / PDF Kaydet</button>
+  </div>
+  <div id="print-preview-pages"></div>
+</div>
+
+<script>
+// ══════════════════════════════════════
+//  PRINT SYSTEM
+// ══════════════════════════════════════
+let selectedPrintSubject = null;
+
+function openPrintModal(){
+  document.getElementById('print-modal').classList.add('open');
+}
+function closePrintModal(){
+  document.getElementById('print-modal').classList.remove('open');
+  // reset selection
+  document.querySelectorAll('.print-subject-btn').forEach(b=>{
+    b.classList.remove('selected');
+    b.querySelector('.ps-check').textContent='';
+  });
+  selectedPrintSubject=null;
+  document.getElementById('print-go-btn').disabled=true;
+}
+function selectPrintSubject(btn,id){
+  document.querySelectorAll('.print-subject-btn').forEach(b=>{
+    b.classList.remove('selected');
+    b.querySelector('.ps-check').textContent='';
+  });
+  btn.classList.add('selected');
+  btn.querySelector('.ps-check').textContent='✓';
+  selectedPrintSubject=id;
+  document.getElementById('print-go-btn').disabled=false;
+}
+function closePrintPreview(){
+  document.getElementById('print-preview-overlay').classList.remove('open');
+}
+
+// ── CONTENT BUILDERS ──
+function buildBioPrintPages(){
+  return `
+<div class="print-page" style="--pp-color:#0f3460;--pp-bg:#eaf4fd">
+  <div class="print-page-header">
+    <div class="pp-title">🧬 BİYOLOJİ — 10. Sınıf 2. Dönem 1. Yazılı</div>
+    <div class="pp-sub">Enerji-Metabolizma | Ekoloji<br>Sayfa 71–120</div>
+  </div>
+
+  <div class="pp-section-title">⚡ ENERJİ VE METABOLİZMA — Temel Bilgiler</div>
+  <table class="pp-table">
+    <tr><th>Besin</th><th>Enerji (kcal/g)</th><th>Özellik</th></tr>
+    <tr><td><b>Karbonhidrat</b></td><td>4 kcal/g</td><td>Hızlı enerji; glikoz, fruktoz, galaktoz</td></tr>
+    <tr><td><b>Yağ</b></td><td>9 kcal/g</td><td>Uzun süreli enerji; bol C-H bağı → daha fazla ATP</td></tr>
+    <tr><td><b>Protein</b></td><td>4 kcal/g</td><td>Asıl görev yapı maddesi; gerektiğinde enerji</td></tr>
+  </table>
+
+  <div class="pp-grid2" style="margin-top:8px">
+    <div class="pp-card"><strong>🔋 ATP Yapısı</strong>Adenin (azotlu baz) + Riboz (5C şeker) + 3 Fosfat grubu<br><b>Bağlar:</b> Adenin-Riboz=glikozit | Riboz-fosfat=ester | Fosfatlar arası=yüksek enerjili</div>
+    <div class="pp-card"><strong>🔄 ATP Döngüsü</strong>ATP → ADP + Pi + Enerji (hidroliz)<br>ADP + Pi + Enerji → ATP (hücresel solunum)<br>Atık: CO₂ + H₂O + Isı</div>
+  </div>
+  <div class="pp-bilgi">Dengeli beslenme: %55-60 KH | %25-30 Yağ | %10-15 Protein · Pozitif enerji dengesi → Obezite → Diyabet / Kalp hastalığı</div>
+
+  <div class="pp-section-title">🌍 EKOLOJİ — Temel Kavramlar</div>
+  <div class="pp-grid3">
+    <div class="pp-mini"><b>Organizma</b>Tek bir canlı</div>
+    <div class="pp-mini"><b>Popülasyon</b>Aynı türden bireyler topluluğu</div>
+    <div class="pp-mini"><b>Komünite</b>Tüm türlerin topluluğu</div>
+    <div class="pp-mini"><b>Ekosistem</b>Komünite + abiyotik çevre</div>
+    <div class="pp-mini"><b>Biyosfer</b>Tüm ekosistemler</div>
+    <div class="pp-mini"><b>Abiyotik</b>Işık, sıcaklık, su, toprak, hava</div>
+  </div>
+
+  <div class="pp-section-title">🔗 KOMÜNİTE ETKİLEŞİMLERİ</div>
+  <table class="pp-table">
+    <tr><th>İlişki</th><th>Sembol</th><th>Tanım</th><th>Örnek</th></tr>
+    <tr><td><b>Mutualizm</b></td><td>+/+</td><td>Her iki tür de fayda sağlar</td><td>Liken (alg+mantar), Nodül (baklagil+bakteri), Bağırsak florası</td></tr>
+    <tr><td><b>Kommensalizm</b></td><td>+/0</td><td>Biri fayda, diğeri etkilenmez</td><td>Karga-geyik, epifitler, balık-köpek balığı</td></tr>
+    <tr><td><b>Parazitizm</b></td><td>+/−</td><td>Biri fayda, diğeri zarar görür</td><td>Ökse otu-ağaç (yarı), Canavar otu-ağaç (tam), kene</td></tr>
+    <tr><td><b>Rekabet</b></td><td>−/−</td><td>Her iki tür de zarar görür</td><td>Gause: P. aurelia, P. caudatum'u dışlar</td></tr>
+    <tr><td><b>Av-Avcı</b></td><td>+/−</td><td>Avcı fayda, av zarar görür</td><td>Tavşan-vaşak; dalgalı popülasyon</td></tr>
+  </table>
+  <div class="pp-uyari">⚠️ Mutualizm: Zorunlu (liken, nodül) ve isteğe bağlı (karga-geyik) olabilir | Gause prensibi: Aynı nişte iki tür kalıcı yaşayamaz</div>
+
+  <div class="print-page-footer">
+    <span>🧬 Biyoloji — 2. Dönem 1. Yazılı Konu Notu</span>
+    <span>Sayfa 1 / 2</span>
+  </div>
+</div>
+
+<div class="print-page" style="--pp-color:#0f3460;--pp-bg:#eaf4fd">
+  <div class="print-page-header">
+    <div class="pp-title">🧬 BİYOLOJİ — Ekoloji (devam) & Popülasyon</div>
+    <div class="pp-sub">Komünite · Süksesyon · Popülasyon<br>Sayfa 106–120</div>
+  </div>
+
+  <div class="pp-section-title">🌿 SÜKSESYON</div>
+  <div class="pp-grid2">
+    <div class="pp-card"><strong>Primer Süksesyon</strong>Sıfırdan başlar (çıplak kaya)<br>Kayalar → <b>Likenler (öncü tür)</b> → Yosunlar → Otsu bitkiler → Çalılar → Ağaçlar → Klimaks topluluk<br>Daha YAVAŞ</div>
+    <div class="pp-card"><strong>Sekonder Süksesyon</strong>Var olan ortamda yeniden başlar (yangın, sel)<br>Toprak hâlâ var → Daha HIZLI ilerler<br>Klimaks topluluk: Kararlı son aşama</div>
+  </div>
+
+  <div class="pp-section-title">📊 POPÜLASYON DİNAMİĞİ</div>
+  <div class="pp-grid2">
+    <div class="pp-card"><strong>Taşıma Kapasitesi (K)</strong>Çevrenin destekleyebileceği maksimum birey sayısı. Lojistik büyüme (S eğrisi) K'ya yaklaştıkça yavaşlar. J eğrisi = sınırsız ortam.</div>
+    <div class="pp-card"><strong>Çevre Direnci</strong>Büyümeyi engelleyen faktörler:<br>Besin eksikliği · Su kıtlığı · Yer yetersizliği · Hastalık · Parazitler · Avcılar · İklim</div>
+  </div>
+
+  <div class="pp-section-title">🎯 SINAV ODAKLI — Flash Kart Özeti</div>
+  <div class="pp-flash-grid">
+    <div class="pp-flash-card"><div class="ppfc-q">Liken ilişki tipi?</div><div class="ppfc-a">Zorunlu Mutualizm (+/+) — Alg + Mantar</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Nodül nedir?</div><div class="ppfc-a">Baklagil kökünde Rhizobium bakterileri — N₂'yi NH₃'e dönüştürür</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Gause prensibi?</div><div class="ppfc-a">Aynı nişte iki tür kalıcı yaşayamaz — biri dışlanır</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">KH, Yağ, Protein enerji?</div><div class="ppfc-a">KH=4 | Yağ=9 | Protein=4 kcal/g</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Primer süksesyon öncü tür?</div><div class="ppfc-a">Likenler (kaya üzerinde ilk yaşayan)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">ATP'nin tam adı ve yapısı?</div><div class="ppfc-a">Adenozin Trifosfat — Adenin+Riboz+3 Fosfat</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Taşıma kapasitesi nedir?</div><div class="ppfc-a">Çevrenin destekleyebileceği max birey sayısı (K)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Ökse otu ilişki tipi?</div><div class="ppfc-a">Yarı parazitizm — fotosentez yapar ama su çalar</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Pozitif enerji dengesi?</div><div class="ppfc-a">Alınan &gt; Harcanan → yağ birikimi → obezite</div></div>
+  </div>
+
+  <div class="pp-section-title">❓ ÖNEMLİ AÇIK UÇLU SORULAR</div>
+  <div class="pp-qa"><div class="ppq">Mutualizm ile kommensalizmi karşılaştırınız.</div><div class="ppa">Mutualizm (+/+): Her iki tür fayda sağlar. Örn: Liken (alg+mantar), bağırsak florası. Kommensalizm (+/0): Biri fayda görür, diğeri etkilenmez. Örn: Karga-geyik. Temel fark: kommensalizmde bir tür nötr kalır.</div></div>
+  <div class="pp-qa"><div class="ppq">ATP döngüsünü ve enerji dönüşüm zincirini açıklayınız.</div><div class="ppa">Besinler → Hücresel solunum → ATP → Yaşamsal faaliyetler + Isı. ATP→ADP+Pi+Enerji (hidroliz); ADP+Pi+Enerji→ATP (sentez). Enerji her dönüşümde kısmen ısı olarak kaybolur.</div></div>
+
+  <div class="print-page-footer">
+    <span>🧬 Biyoloji — 2. Dönem 1. Yazılı Konu Notu</span>
+    <span>Sayfa 2 / 2</span>
+  </div>
+</div>`;
+}
+
+function buildCogPrintPages(){
+  return `
+<div class="print-page" style="--pp-color:#1a3a5c;--pp-bg:#eaf4fd">
+  <div class="print-page-header">
+    <div class="pp-title">🌍 COĞRAFYA — 10. Sınıf 2. Dönem 1. Yazılı</div>
+    <div class="pp-sub">Yerleşmelerin Fonksiyonları · Ekonomik Sektörler · Gelişmişlik</div>
+  </div>
+
+  <div class="pp-section-title">🏙️ YERLEŞMELERİN FONKSİYONLARI</div>
+  <table class="pp-table">
+    <tr><th>Fonksiyon</th><th>Örnekler</th></tr>
+    <tr><td><b>Tarım</b></td><td>Polatlı (Ankara), Çarşamba (Samsun)</td></tr>
+    <tr><td><b>Madencilik</b></td><td>Ereğli/Zonguldak (kömür), Batman (petrol), Karabük (demir-çelik)</td></tr>
+    <tr><td><b>Sanayi</b></td><td>Kocaeli (kimya-otomotiv), Bursa (tekstil-otomotiv), Adana (tekstil)</td></tr>
+    <tr><td><b>Ticaret</b></td><td>Ataşehir — İstanbul Finans Merkezi</td></tr>
+    <tr><td><b>Turizm</b></td><td>Muğla (koy-körfez), Antalya-Kemer</td></tr>
+    <tr><td><b>Ulaşım</b></td><td>Rotterdam (deniz), Frankfurt (hava), Eskişehir (demir yolu)</td></tr>
+    <tr><td><b>Yönetim</b></td><td>Ankara (başkent)</td></tr>
+    <tr><td><b>Eğitim-Kültürel</b></td><td>Eskişehir, Oxford, Cambridge</td></tr>
+    <tr><td><b>Sağlık</b></td><td>Hastane şehirleri</td></tr>
+    <tr><td><b>Askeri</b></td><td>Polatlı (askeri üs)</td></tr>
+  </table>
+  <div class="pp-bilgi">Adana fonksiyon dönüşümü: Tarım → Sanayi → Ticaret → Eğitim/Sağlık/Ulaşım → Çok fonksiyonlu şehir</div>
+  <div class="pp-uyari">⚠️ Köy: &lt;2000 nüfus | Kasaba: 2000–20000 | Şehir: &gt;20000 | Büyük şehirlerde fonksiyon çeşitlenir</div>
+
+  <div class="pp-section-title">⚙️ EKONOMİK SEKTÖRLER</div>
+  <table class="pp-table">
+    <tr><th>Sektör</th><th>Faaliyet Türü</th><th>Örnekler</th></tr>
+    <tr><td><b>1. Birincil</b></td><td>Doğadan ham madde elde etme</td><td>Tarım, hayvancılık, balıkçılık, ormancılık, ham madde madenciliği</td></tr>
+    <tr><td><b>2. İkincil</b></td><td>Ham maddeyi işleme/sanayi</td><td>Tekstil, gıda, inşaat, hidroelektrik, pamuk→iplik→kumaş</td></tr>
+    <tr><td><b>3. Üçüncül</b></td><td>Hizmet sektörü</td><td>Ticaret, sağlık, eğitim, turizm, finans, ulaşım</td></tr>
+    <tr><td><b>4. Dördüncül</b></td><td>Bilgi ve teknoloji</td><td>CBS, AR-GE, yazılım, grafik tasarım — <b>istatistikte 3. sektöre dahil!</b></td></tr>
+    <tr><td><b>5. Beşincil</b></td><td>Üst düzey karar alma</td><td>CEO, bakan, akademisyen, general — <b>istatistikte 3. sektöre dahil!</b></td></tr>
+  </table>
+
+  <div class="print-page-footer">
+    <span>🌍 Coğrafya — 2. Dönem 1. Yazılı Konu Notu</span>
+    <span>Sayfa 1 / 2</span>
+  </div>
+</div>
+
+<div class="print-page" style="--pp-color:#1a3a5c;--pp-bg:#eaf4fd">
+  <div class="print-page-header">
+    <div class="pp-title">🌍 COĞRAFYA — Gelişmişlik & Flash Kartlar</div>
+    <div class="pp-sub">Ekonomik Gelişmişlik · Sektör Karşılaştırması</div>
+  </div>
+
+  <div class="pp-section-title">🌐 GELİŞMİŞLİK DÜZEYİ KARŞILAŞTIRMASI</div>
+  <table class="pp-table">
+    <tr><th>Gösterge</th><th>Gelişmiş Ülke</th><th>Az Gelişmiş Ülke</th></tr>
+    <tr><td>Birincil sektör</td><td>↓ Düşük</td><td>↑ Yüksek</td></tr>
+    <tr><td>Üçüncül sektör</td><td>↑ Yüksek</td><td>↓ Düşük</td></tr>
+    <tr><td>GSYİH/kişi</td><td>Yüksek</td><td>Düşük</td></tr>
+    <tr><td>Ham madde</td><td>ALIR</td><td>SATAR</td></tr>
+    <tr><td>İşlenmiş ürün</td><td>SATAR</td><td>ALIR</td></tr>
+    <tr><td>Katma değer</td><td>Yüksek (işlenmiş)</td><td>Düşük (ham madde)</td></tr>
+  </table>
+  <div class="pp-bilgi">GSYİH = Gayrisafi Yurt İçi Hasıla: Ülke sınırları içinde üretilen tüm mal ve hizmetlerin piyasa değeri</div>
+
+  <div class="pp-section-title">🎯 SINAV ODAKLI — Flash Kart Özeti</div>
+  <div class="pp-flash-grid">
+    <div class="pp-flash-card"><div class="ppfc-q">Zonguldak/Ereğli fonksiyonu?</div><div class="ppfc-a">Madencilik (kömür üretimi)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Batman fonksiyonu?</div><div class="ppfc-a">Madencilik (petrol)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">4. ve 5. sektör istatistikte?</div><div class="ppfc-a">3. sektöre (üçüncül) dahil edilir!</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">GSYİH açılımı?</div><div class="ppfc-a">Gayrisafi Yurt İçi Hasıla</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">CBS hangi sektör?</div><div class="ppfc-a">Dördüncül sektör (bilgi-teknoloji)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Pamuk→iplik→kumaş?</div><div class="ppfc-a">İkincil sektör (sanayi/imalat)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Grafik oku: birincil düşükse?</div><div class="ppfc-a">GELİŞMİŞ ülke</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Eskişehir fonksiyonları?</div><div class="ppfc-a">Eğitim-Kültürel + Turizm + Demiryolu ulaşımı</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Rotterdam fonksiyonu?</div><div class="ppfc-a">Deniz yolu ulaşım (Avrupa'nın büyük limanı)</div></div>
+  </div>
+
+  <div class="pp-section-title">❓ ÖNEMLİ AÇIK UÇLU SORULAR</div>
+  <div class="pp-qa"><div class="ppq">Bir ülkenin gelişmişliği ekonomik sektörlere bakılarak nasıl anlaşılır?</div><div class="ppa">Birincil sektör oranı düşük + Üçüncül sektör oranı yüksek = Gelişmiş ülke. Az gelişmiş ülkelerde tarım ağırlıklı ekonomi vardır. Not: istatistikte 4. ve 5. sektör 3. sektöre dahil edilir.</div></div>
+  <div class="pp-qa"><div class="ppq">Fonksiyon çeşitlenmesi nedir? Adana örneğiyle açıklayınız.</div><div class="ppa">Bir yerleşmenin başlangıçtaki tek fonksiyonunun zaman içinde çoğalması. Adana: Tarım → Sanayi → Ticaret → Eğitim/Sağlık/Ulaşım şeklinde çok fonksiyonlu bir şehre dönüşmüştür.</div></div>
+
+  <div class="print-page-footer">
+    <span>🌍 Coğrafya — 2. Dönem 1. Yazılı Konu Notu</span>
+    <span>Sayfa 2 / 2</span>
+  </div>
+</div>`;
+}
+
+function buildFelPrintPages(){
+  return `
+<div class="print-page" style="--pp-color:#7c3aed;--pp-bg:#f5f3ff">
+  <div class="print-page-header">
+    <div class="pp-title">🤔 FELSEFE — 10. Sınıf 2. Dönem 1. Yazılı</div>
+    <div class="pp-sub">Bilgi Felsefesi (FEL.10.4.1) · Ahlak Felsefesi (FEL.10.5.1) · Estetik (FEL.10.6.1)</div>
+  </div>
+
+  <div class="pp-section-title">📖 BİLGİ FELSEFESİ — Temel Kavramlar</div>
+  <div class="pp-grid2">
+    <div class="pp-mini"><b>Bilgi (Episteme)</b>Doğruluğu kanıtlanmış, gerekçelendirilmiş inanç</div>
+    <div class="pp-mini"><b>Sanı (Doksa)</b>Kesin olmayan, doğrulanmamış öznel inanç</div>
+    <div class="pp-mini"><b>Doğruluk</b>Bilginin gerçeğe uygunluğu</div>
+    <div class="pp-mini"><b>Gerçeklik</b>Var olan her şeyin toplamı</div>
+    <div class="pp-mini"><b>Epistemoloji</b>Bilgi felsefesi — "Bilgi nedir?" sorusu</div>
+    <div class="pp-mini"><b>Temellendirme</b>Bilginin neden doğru olduğunun gerekçesi</div>
+  </div>
+
+  <div class="pp-section-title">BİLGİNİN İMKÂNI PROBLEMİ</div>
+  <table class="pp-table">
+    <tr><th>Görüş</th><th>Temsilci</th><th>Temel İddia</th></tr>
+    <tr><td><b>Şüphecilik</b></td><td>Gorgias, Pyrrhon</td><td>Kesin bilgi mümkün değil; duyular yanıltıcı<br><b>Gorgias 3 tezi:</b> Varlık yok / bilinemez / aktarılamaz<br><b>Pyrrhon Epokhe:</b> Yargıdan kaçınma → mutluluk</td></tr>
+    <tr><td><b>Dogmatizm</b></td><td>Sokrates, Platon, Aristoteles</td><td>Kesin bilgiye ulaşmak mümkündür<br><b>Sokrates:</b> İroni + Maiotik yöntemi<br><b>Platon:</b> İdealar bilgisi; episteme ≠ doksa<br><b>Aristoteles:</b> Duyu + akıl birlikte</td></tr>
+    <tr><td><b>Descartes</b></td><td>R. Descartes</td><td>Şüpheyi ARAÇ olarak kullanır (septik değil!)<br>"Düşünüyorum, öyleyse varım" → apaçık bilgi</td></tr>
+  </table>
+
+  <div class="pp-section-title">BİLGİNİN KAYNAĞI & DOĞRULUK ÖLÇÜTLERİ</div>
+  <div class="pp-grid2">
+    <table class="pp-table">
+      <tr><th>Akım</th><th>Kaynak</th><th>Temsilci</th></tr>
+      <tr><td><b>Rasyonalizm</b></td><td>Akıl (apriori)</td><td>Platon, Descartes, Kant</td></tr>
+      <tr><td><b>Empirizm</b></td><td>Duyu/Deney (aposteriori)</td><td>Locke, Hume</td></tr>
+      <tr><td><b>Kritisizm</b></td><td>Akıl + Deney birlikte</td><td>Kant</td></tr>
+      <tr><td><b>Entüisyonizm</b></td><td>Sezgi</td><td>Gazali, Bergson</td></tr>
+    </table>
+    <table class="pp-table">
+      <tr><th>Doğruluk Teorisi</th><th>İlke</th></tr>
+      <tr><td><b>Uygunluk</b></td><td>Bilgi gerçeklikle örtüşüyor mu?</td></tr>
+      <tr><td><b>Tutarlılık</b></td><td>Diğer bilgilerle çelişmiyor mu?</td></tr>
+      <tr><td><b>Tümel Uzlaşım</b></td><td>Uzmanlar ve toplum kabul ediyor mu?</td></tr>
+      <tr><td><b>Yarar</b></td><td>Pratikte işe yarıyor mu?</td></tr>
+    </table>
+  </div>
+  <div class="pp-uyari">⚠️ Kant: "Görüsüz kavramlar boş, kavramsız görüler kördür" — Rasyonalizm ve Empirizmi birleştirir</div>
+
+  <div class="print-page-footer">
+    <span>🤔 Felsefe — 2. Dönem 1. Yazılı Konu Notu</span>
+    <span>Sayfa 1 / 2</span>
+  </div>
+</div>
+
+<div class="print-page" style="--pp-color:#7c3aed;--pp-bg:#f5f3ff">
+  <div class="print-page-header">
+    <div class="pp-title">🤔 FELSEFE — Ahlak & Estetik Felsefesi</div>
+    <div class="pp-sub">FEL.10.5.1 · FEL.10.6.1</div>
+  </div>
+
+  <div class="pp-section-title">AHLAK FELSEFESİ — Evrensel Yasa Var mı?</div>
+  <div class="pp-grid2">
+    <div class="pp-card" style="border-color:#22c55e"><strong style="color:#15803d">✅ EVRENSEL YASA VAR diyenler</strong><b>Sokrates:</b> Kötülük bilgisizlikten — iyi bilen iyi yapar<br><b>Farabi:</b> Mutluluk bilgiyle; peygamber bilgileri<br><b>Kant:</b> Ödev bilinciyle, iyi niyetle → evrensel yasa<br><b>J.S. Mill:</b> Max sayıda insana max mutluluk (faydacılık)</div>
+    <div class="pp-card" style="border-color:#ef4444"><strong style="color:#dc2626">❌ EVRENSEL YASA YOK diyenler</strong><b>Epiküros:</b> Haz iyidir; hazlar kişiden kişiye değişir<br><b>T. Hobbes:</b> İyi = haz veren; değerler kişisel<br><b>M. Stirner:</b> Kişi sadece kendine karşı sorumlu<br><b>J. Bentham:</b> Fayda sağlayan iyidir; herkese göre farklı</div>
+  </div>
+  <div class="pp-uyari">⚠️ Kant: Eylemin ahlaki değeri SONUCA değil NİYETE göre belirlenir!</div>
+
+  <div class="pp-section-title">ÖZGÜRLÜK — SORUMLULUK İLİŞKİSİ</div>
+  <table class="pp-table">
+    <tr><th>Görüş</th><th>Özgürlük</th><th>Sorumluluk</th><th>Temsilci</th></tr>
+    <tr><td><b>Determinizm</b></td><td>❌ Yok (neden-sonuç zinciri)</td><td>❌ Tutulamaz</td><td>Schopenhauer</td></tr>
+    <tr><td><b>İndeterminizm</b></td><td>✅ Var</td><td>✅ Tutulabilir</td><td>Sartre</td></tr>
+    <tr><td><b>Fatalizm</b></td><td>❌ Yok (Tanrı belirler)</td><td>⚡ Kısmen</td><td>—</td></tr>
+    <tr><td><b>Otodeterminizm</b></td><td>✅ Bilinçli seçimle kazanılır</td><td>✅ Tutulabilir</td><td>Kant, Spinoza</td></tr>
+  </table>
+
+  <div class="pp-section-title">ESTETİK FELSEFESİ</div>
+  <table class="pp-table">
+    <tr><th>Filozof</th><th>Güzellik Yargısı</th><th>Ortak Estetik Yargı</th><th>Görüş</th></tr>
+    <tr><td><b>Platon</b></td><td>Nesnel</td><td>✅ Kabul</td><td>Güzellik değişmez ideadır; akılla kavranır</td></tr>
+    <tr><td><b>I. Kant</b></td><td>Öznel ama evrensel</td><td>✅ Kabul</td><td>Güzel = çıkarsız hoşa giden; evrensel talep eder</td></tr>
+    <tr><td><b>A. Baumgarten</b></td><td>Duyusal+Nesnel</td><td>✅ Kabul</td><td>Duyusal bilginin yetkinliği; ortak temeller var</td></tr>
+    <tr><td><b>B. Croce</b></td><td>Tamamen Öznel</td><td>❌ Reddeder</td><td>Güzellik izleyenin gözündedir; sezginin ifadesi</td></tr>
+  </table>
+  <div class="pp-bilgi">Sanat kuramları: Taklit (Platon) = gerçeğin kopyası | Yaratım (Croce) = sanatçının iç dünyası | Oyun (Schiller) = özgür etkinlik</div>
+
+  <div class="pp-section-title">🎯 FLASH KART ÖZETİ</div>
+  <div class="pp-flash-grid">
+    <div class="pp-flash-card"><div class="ppfc-q">Gorgias'ın 3 tezi?</div><div class="ppfc-a">1) Varlık yok 2) Olsa bilinemez 3) Bilinse aktarılamaz</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Pyrrhon — epokhe?</div><div class="ppfc-a">Yargıdan kaçınma; ölçüt yok → yargı yapamazsın</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Descartes septik mi?</div><div class="ppfc-a">Hayır! Şüpheyi araç kullanır → Cogito (Varım)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Apriori vs aposteriori?</div><div class="ppfc-a">Apriori = deney öncesi (Rasyonalizm) | Aposteriori = deney sonrası (Empirizm)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Kant'ın ahlak kriteri?</div><div class="ppfc-a">Niyet! Evrensel yasaya uygun, ödev bilinciyle yapılan eylem</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Croce'nin estetik görüşü?</div><div class="ppfc-a">Güzellik tamamen özneldir; sezginin ifadesi; her deneyim biricik</div></div>
+  </div>
+
+  <div class="print-page-footer">
+    <span>🤔 Felsefe — 2. Dönem 1. Yazılı Konu Notu</span>
+    <span>Sayfa 2 / 2</span>
+  </div>
+</div>`;
+}
+
+function buildDinPrintPages(){
+  return `
+<div class="print-page" style="--pp-color:#0f766e;--pp-bg:#ccfbf1">
+  <div class="print-page-header">
+    <div class="pp-title">☪️ DİN KÜLTÜRÜ — 10. Sınıf 2. Dönem 1. Yazılı</div>
+    <div class="pp-sub">3. Ünite: İslam'ın Evrensel Mesajları | DKAB.10.3.1–3.4 | Sayfa 80–113</div>
+  </div>
+
+  <div class="pp-section-title">3.1 TEVHİT İLKESİ</div>
+  <div class="pp-grid2">
+    <div class="pp-card"><strong>Tevhit Nedir?</strong>Allah'ın bir ve tek olduğunu bilmek. İslam'ın TEMEL İLKESİdir.<br><b>Zıttı:</b> Şirk — Allah'a ortak koşmak (en büyük günah, bağışlanmaz)</div>
+    <div class="pp-card"><strong>Tevhitin 3 Boyutu</strong>1) Allah'ın Rab olduğunu kabul (yaratıcı, rızık verici)<br>2) İbadetleri sadece Allah için yapmak<br>3) Allah'ın isim ve sıfatlarını yalnız O'na özgü kabul</div>
+  </div>
+  <div class="pp-bilgi">Tüm peygamberlerin ortak mesajı TEVHİTtir. Hz. Nuh → ilk putperestlikle mücadele. İhlas Suresi: "O, Allah'tır, bir tektir..."</div>
+
+  <div class="pp-section-title">3.2 ADALET VE EŞİTLİK — Temel İlkeler</div>
+  <table class="pp-table">
+    <tr><th>İlke</th><th>Tanım</th></tr>
+    <tr><td><b>Eşitlik</b></td><td>Herkesin aynı haklara sahip olduğunu kabul; kanunların ayrımcı olmaması</td></tr>
+    <tr><td><b>Liyakat</b></td><td>Görev ve sorumlulukların ehil kişilere verilmesi (yeterlilik ilkesi)</td></tr>
+    <tr><td><b>Emanet</b></td><td>Din, ilim, nimetler, kamu malları ve devlet makamları emanettir</td></tr>
+    <tr><td><b>Hakkaniyet</b></td><td>Her olayın kendi özelliklerine göre değerlendirilerek adil karar verme</td></tr>
+    <tr><td><b>Ahde Vefa</b></td><td>Allah'a ve insanlara verilen sözü yerine getirme</td></tr>
+    <tr><td><b>Şeffaflık</b></td><td>Açıklık, dürüstlük, denetlenebilirlik</td></tr>
+    <tr><td><b>Hesap Verebilirlik</b></td><td>Aldığı kararlardan sorumlu olma; Allah'a, aileye, topluma</td></tr>
+    <tr><td><b>İnsanın Saygınlığı</b></td><td>Sadece insan olmakla saygın ve dokunulmaz olma hakkı</td></tr>
+  </table>
+  <div class="pp-bilgi">Allah'ın ismi "Adl" — Her varlığa yaratılışına uygun imkân ve nimet bahşetmesi | Adl Allah'ın esmayı hüsnasından biridir</div>
+  <div class="pp-uyari">⚠️ Veda Hutbesi: "Üstünlük ancak takva iledir" — Arap/Arap olmayan, beyaz/siyah farkı yoktur</div>
+
+  <div class="print-page-footer">
+    <span>☪️ Din Kültürü — 2. Dönem 1. Yazılı Konu Notu</span>
+    <span>Sayfa 1 / 2</span>
+  </div>
+</div>
+
+<div class="print-page" style="--pp-color:#0f766e;--pp-bg:#ccfbf1">
+  <div class="print-page-header">
+    <div class="pp-title">☪️ DİN KÜLTÜRÜ — Barış & Kur'an'dan Mesajlar</div>
+    <div class="pp-sub">3.3 İslam ve Barış · 3.4 Kur'an'dan Mesajlar (Nahl 90 · Nisa 58 · Bakara 208)</div>
+  </div>
+
+  <div class="pp-section-title">3.3 İSLAM VE BARIŞ — CİHAT</div>
+  <div class="pp-grid2">
+    <div class="pp-card"><strong>İslam Kelimesinin Anlamı</strong>S-L-M kökünden: kurtuluşa erme, güven, emniyet, sulh ve barış. Selam = Allah'ın isimlerinden biri.</div>
+    <div class="pp-card"><strong>Cihat Türleri</strong><b>Büyük cihat:</b> Nefisle mücadele (kötü duygulara karşı iç mücadele)<br><b>Küçük cihat:</b> Zorunlu hâlde vatan/din savunması</div>
+    <div class="pp-card"><strong>Farzıkifaye Cihat</strong>Ordu yeterliyse diğerleri için savaş farzıkifaye. İslam'ı tebliğ etme görevi de farzıkifaye.</div>
+    <div class="pp-card"><strong>Farzıayn Cihat</strong>Ordu yetersizse herkesin savunması farzıayn. Nefsi terbiye etmek de farzıayndır.</div>
+  </div>
+  <div class="pp-bilgi">Medine Vesikası: Farklı inançlardaki topluluklarla barış antlaşması — eşit vatandaşlık, din özgürlüğü, ortak savunma</div>
+
+  <div class="pp-section-title">3.4 KUR'AN'DAN MESAJLAR — 3 Temel Ayet</div>
+  <table class="pp-table">
+    <tr><th>Ayet</th><th>Emredilenler</th><th>Yasaklananlar / Mesaj</th></tr>
+    <tr><td><b>Nahl 90</b></td><td>Adalet (Adl) · İhsan · Akrabaya yardım</td><td>Fahşâ (hayasızlık) · Münker (kötülük) · Bağy (zorbalık/haddi aşma)</td></tr>
+    <tr><td><b>Nisa 58</b></td><td>Emaneti ehline ver · Adaletle hükmet</td><td>Nüzul sebebi: Kabe anahtarı → Osman bin Talha'ya iade (liyakat)</td></tr>
+    <tr><td><b>Bakara 208</b></td><td>Topluca barışa (İslam'a) gir</td><td>Şeytanın adımlarını izleme · "Silm" = uzlaşma, teslimiyet, barış</td></tr>
+  </table>
+  <div class="pp-bilgi">İhsan = Allah'ı görür gibi ibadet etmek; başkasına iyilik; yaptığını güzel yapmak</div>
+
+  <div class="pp-section-title">🎯 FLASH KART ÖZETİ</div>
+  <div class="pp-flash-grid">
+    <div class="pp-flash-card"><div class="ppfc-q">Tevhitin 3 boyutu?</div><div class="ppfc-a">1) Rab olduğuna inanmak 2) Yalnız O'na ibadet 3) İsim-sıfatları O'na özgü</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Büyük ve küçük cihat farkı?</div><div class="ppfc-a">Büyük = nefisle mücadele (iç) | Küçük = cephede savaş (dış)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Nisa 58 nüzul sebebi?</div><div class="ppfc-a">Kabe anahtarı — emanetin ehline verilmesi (Osman bin Talha)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Nahl 90'da yasaklananlar?</div><div class="ppfc-a">Fahşâ (hayasızlık) + Münker (kötülük) + Bağy (zorbalık)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Veda Hutbesi mesajı?</div><div class="ppfc-a">Üstünlük ancak takva ile — ırk/renk/dil farkı üstünlük sağlamaz</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">"Silm" kavramı ne demek?</div><div class="ppfc-a">Uzlaşma, teslimiyet, barış — "İslam" anlamında kullanılmış (Bakara 208)</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Adl ismi ne anlama gelir?</div><div class="ppfc-a">Allah'ın her varlığa yaratılışına uygun imkân ve nimet bahşetmesi</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">İhsan nedir?</div><div class="ppfc-a">Allah'ı görür gibi ibadet; başkasına iyilik; yaptığını güzel yapma</div></div>
+    <div class="pp-flash-card"><div class="ppfc-q">Liyakat ilkesi?</div><div class="ppfc-a">Görev ve sorumlulukların ehil/yeterli kişilere verilmesi</div></div>
+  </div>
+
+  <div class="print-page-footer">
+    <span>☪️ Din Kültürü — 2. Dönem 1. Yazılı Konu Notu</span>
+    <span>Sayfa 2 / 2</span>
+  </div>
+</div>`;
+}
+
+function startPrint(){
+  if(!selectedPrintSubject) return;
+  closePrintModal();
+  const overlay = document.getElementById('print-preview-overlay');
+  const pagesDiv = document.getElementById('print-preview-pages');
+  const titleEl = document.getElementById('ppt-title');
+  
+  const builders = {
+    bio: {fn: buildBioPrintPages, label:'🧬 Biyoloji — Çıktı Önizleme'},
+    cog: {fn: buildCogPrintPages, label:'🌍 Coğrafya — Çıktı Önizleme'},
+    fel: {fn: buildFelPrintPages, label:'🤔 Felsefe — Çıktı Önizleme'},
+    din: {fn: buildDinPrintPages, label:'☪️ Din Kültürü — Çıktı Önizleme'},
+  };
+  
+  const b = builders[selectedPrintSubject];
+  if(!b) return;
+  titleEl.textContent = b.label;
+  pagesDiv.innerHTML = b.fn();
+  overlay.classList.add('open');
+  window.scrollTo(0,0);
+}
+</script>
+
 </body>
 </html>
