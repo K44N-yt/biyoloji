@@ -1035,6 +1035,14 @@ footer{
     <span class="nav-icon">🌍</span><span>Coğrafya</span>
   </button>
   <div class="nav-divider"></div>
+  <button class="nav-btn" data-page="fel" style="--nav-active:#a78bfa" onclick="goPage('fel')">
+    <span class="nav-icon">🤔</span><span>Felsefe</span>
+  </button>
+  <div class="nav-divider"></div>
+  <button class="nav-btn" data-page="din" style="--nav-active:#14b8a6" onclick="goPage('din')">
+    <span class="nav-icon">☪️</span><span>Din Kültürü</span>
+  </button>
+  <div class="nav-divider"></div>
   <button class="nav-btn disabled" title="Yakında">
     <span class="nav-icon">⚔️</span><span>Tarih</span>
   </button>
@@ -1045,10 +1053,6 @@ footer{
   <div class="nav-divider"></div>
   <button class="nav-btn disabled" title="Yakında">
     <span class="nav-icon">⚛️</span><span>Fizik</span>
-  </button>
-  <div class="nav-divider"></div>
-  <button class="nav-btn disabled" title="Yakında">
-    <span class="nav-icon">🧪</span><span>Kimya</span>
   </button>
 </nav>
 
@@ -1118,279 +1122,6 @@ footer{
   </div>
 </div>
 
-<script>
-// ── DATA ──
-const subjects = [
-  {
-    name:'Biyoloji',
-    emoji:'🧬',
-    color:'#22c55e',
-    glow:'rgba(34,197,94,0.08)',
-    bg:'rgba(34,197,94,0.12)',
-    date:'25 Mart 2026',
-    time:'10:10',
-    topics:['Enerji-Metabolizma','Ekosistemin Bileşenleri','Komünitelerde Etkileşim','Popülasyon Dinamikleri'],
-    status:'ready',
-    sorular:'4 ders × detaylı',
-    file:'biyoloji_ultra_detayli.html'
-  },
-  {
-    name:'Coğrafya',
-    emoji:'🌍',
-    color:'#3b82f6',
-    glow:'rgba(59,130,246,0.08)',
-    bg:'rgba(59,130,246,0.12)',
-    date:'24 Mart 2026',
-    time:'9:20',
-    topics:['Yerleşmelerin Fonksiyonları','Ekonomik Faaliyetler','Ekonomik Sektörler','Gelişmişlik'],
-    status:'ready',
-    sorular:'2 ünite detaylı',
-    file:'cografya_konu_notu.html'
-  },
-  {
-    name:'Tarih',
-    emoji:'⚔️',
-    color:'#f59e0b',
-    glow:'rgba(245,158,11,0.08)',
-    bg:'rgba(245,158,11,0.12)',
-    date:'26 Mart 2026',
-    time:'9:20',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-  {
-    name:'Türk Dili ve Edebiyatı',
-    emoji:'📖',
-    color:'#ec4899',
-    glow:'rgba(236,72,153,0.08)',
-    bg:'rgba(236,72,153,0.12)',
-    date:'10 Nisan 2026',
-    time:'0:00',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-  {
-    name:'Din Kültürü',
-    emoji:'☪️',
-    color:'#14b8a6',
-    glow:'rgba(20,184,166,0.08)',
-    bg:'rgba(20,184,166,0.12)',
-    date:'25 Mart 2026',
-    time:'9:20',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-  {
-    name:'Felsefe',
-    emoji:'🤔',
-    color:'#a78bfa',
-    glow:'rgba(167,139,250,0.08)',
-    bg:'rgba(167,139,250,0.12)',
-    date:'25 Mart 2026',
-    time:'9:20',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-  {
-    name:'Matematik',
-    emoji:'🔢',
-    color:'#f97316',
-    glow:'rgba(249,115,22,0.08)',
-    bg:'rgba(249,115,22,0.12)',
-    date:'1 Nisan 2026',
-    time:'11:40',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-  {
-    name:'Fizik',
-    emoji:'⚛️',
-    color:'#06b6d4',
-    glow:'rgba(6,182,212,0.08)',
-    bg:'rgba(6,182,212,0.12)',
-    date:'30 Mart 2026',
-    time:'10:10',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-  {
-    name:'Kimya',
-    emoji:'🧪',
-    color:'#10b981',
-    glow:'rgba(16,185,129,0.08)',
-    bg:'rgba(16,185,129,0.12)',
-    date:'31 Mart 2026',
-    time:'10:10',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-  {
-    name:'İngilizce',
-    emoji:'🇬🇧',
-    color:'#f43f5e',
-    glow:'rgba(244,63,94,0.08)',
-    bg:'rgba(244,63,94,0.12)',
-    date:'1 Nisan 2026',
-    time:'10:10',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-  {
-    name:'Sağlık Bilgisi',
-    emoji:'🏥',
-    color:'#84cc16',
-    glow:'rgba(132,204,22,0.08)',
-    bg:'rgba(132,204,22,0.12)',
-    date:'27 Mart 2026',
-    time:'9:20',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-];
-
-const examSchedule = [
-  {date:'24 Mart 2026', time:'9:20',  subject:'Coğrafya',             color:'#3b82f6'},
-  {date:'25 Mart 2026', time:'10:10', subject:'Biyoloji',             color:'#22c55e'},
-  {date:'25 Mart 2026', time:'9:20',  subject:'Din Kültürü',          color:'#14b8a6'},
-  {date:'25 Mart 2026', time:'9:20',  subject:'Felsefe',              color:'#a78bfa'},
-  {date:'26 Mart 2026', time:'9:20',  subject:'Tarih',                color:'#f59e0b'},
-  {date:'27 Mart 2026', time:'9:20',  subject:'Sağlık Bilgisi',       color:'#84cc16'},
-  {date:'30 Mart 2026', time:'10:10', subject:'Fizik',                color:'#06b6d4'},
-  {date:'31 Mart 2026', time:'10:10', subject:'Kimya',                color:'#10b981'},
-  {date:'1 Nisan 2026', time:'10:10', subject:'İngilizce',            color:'#f43f5e'},
-  {date:'1 Nisan 2026', time:'11:40', subject:'Matematik',            color:'#f97316'},
-  {date:'10 Nisan 2026',time:'0:00',  subject:'Türk Dili ve Edebiyatı',color:'#ec4899'},
-];
-
-// ── PARSE DATE ──
-function parseDate(s){
-  const months={Ocak:0,Şubat:1,Mart:2,Nisan:3,Mayıs:4,Haziran:5,Temmuz:6,Ağustos:7,Eylül:8,Ekim:9,Kasım:10,Aralık:11};
-  const [d,m,y]=s.split(' ');
-  return new Date(+y, months[m], +d);
-}
-const today=new Date(); today.setHours(0,0,0,0);
-
-function daysUntil(dateStr){
-  const d=parseDate(dateStr); d.setHours(0,0,0,0);
-  return Math.ceil((d-today)/(1000*60*60*24));
-}
-
-// ── RENDER EXAM PILLS ──
-const strip=document.getElementById('examStrip');
-const upcoming=examSchedule.filter(e=>daysUntil(e.date)>=0).slice(0,5);
-upcoming.forEach(e=>{
-  const days=daysUntil(e.date);
-  const pill=document.createElement('div');
-  pill.className='exam-pill';
-  pill.innerHTML=`
-    <div class="exam-dot" style="background:${e.color}"></div>
-    <div>
-      <div class="subject-name">${e.subject}</div>
-      <div class="date">${e.date} · ${days===0?'<b style="color:#4ade80">BUGÜN!</b>':days===1?'<b style="color:#fbbf24">Yarın</b>':days+' gün kaldı'}</div>
-    </div>`;
-  strip.appendChild(pill);
-});
-
-// ── RENDER SUBJECT CARDS ──
-const grid=document.getElementById('subjectsGrid');
-// Sort: ready first, then by date
-subjects.sort((a,b)=>{
-  if(a.status==='ready' && b.status!=='ready') return -1;
-  if(b.status==='ready' && a.status!=='ready') return 1;
-  return parseDate(a.date)-parseDate(b.date);
-});
-subjects.forEach(s=>{
-  const card=document.createElement('div');
-  card.className='subject-card '+(s.status==='ready'?'ready':'soon');
-  card.style.setProperty('--card-color',s.color);
-  card.style.setProperty('--card-glow',s.glow);
-  card.style.setProperty('--card-bg',s.bg);
-  const days=daysUntil(s.date);
-  const statusLabel=s.status==='ready'?'<span class="card-status status-ready">✓ Hazır</span>':
-    days<=3?`<span class="card-status status-next">⚡ ${days}g</span>`:
-    `<span class="card-status status-soon">○ Yakında</span>`;
-  const topicsHtml=s.topics.map(t=>`<span class="topic-tag">${t}</span>`).join('');
-  const actionHtml=s.status==='ready'
-    ?`<a class="card-action" href="${s.file}" target="_blank">Notlara Git <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>`
-    :`<span class="card-action" style="color:var(--muted);cursor:default">Hazırlanıyor…</span>`;
-  card.innerHTML=`
-    <div class="card-glow"></div>
-    <div class="card-top">
-      <div class="card-icon">${s.emoji}</div>
-      <div class="card-meta">
-        <div class="card-subject">${s.name}</div>
-        <div class="card-date">
-          <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          ${s.date} · ${s.time}
-        </div>
-      </div>
-      ${statusLabel}
-    </div>
-    <div class="card-topics">${topicsHtml}</div>
-    <div class="card-footer">
-      ${actionHtml}
-      <span class="card-soru">${s.sorular}</span>
-    </div>`;
-  if(s.status!=='ready'){
-    card.addEventListener('click',()=>showModal(s.name));
-  }
-  grid.appendChild(card);
-});
-
-// ── RENDER SCHEDULE TABLE ──
-const tbody=document.getElementById('scheduleTbody');
-examSchedule.sort((a,b)=>parseDate(a.date)-parseDate(b.date));
-examSchedule.forEach(e=>{
-  const days=daysUntil(e.date);
-  const isPast=days<0;
-  const isToday=days===0;
-  const tr=document.createElement('tr');
-  if(isToday) tr.className='today-row';
-  if(isPast) tr.className='past-row';
-  const badge=isToday?'<span class="upcoming-badge">BUGÜN</span>':
-    days===1?'<span class="next-badge">Yarın</span>':
-    !isPast&&days<=5?`<span class="next-badge">${days}g kaldı</span>`:'';
-  tr.innerHTML=`
-    <td>${e.date}${badge}</td>
-    <td><span class="time-badge">${e.time}</span></td>
-    <td><span class="subject-label"><span class="subject-dot" style="background:${e.color}"></span>${e.subject}</span></td>
-    <td style="color:${isPast?'var(--muted)':isToday?'#4ade80':days<=3?'#fbbf24':'var(--muted)'};font-size:12px;font-weight:600">
-      ${isPast?'Geçti':isToday?'Bugün!':days+'g kaldı'}
-    </td>`;
-  tbody.appendChild(tr);
-});
-
-// ── MODAL ──
-function showModal(name){
-  document.getElementById('modalTitle').textContent=name+' Notları';
-  document.getElementById('modalText').textContent=name+' dersi için notlar hazırlanıyor. Sıradaki dersler öncelikli olarak eklenecek.';
-  document.getElementById('modal').classList.add('open');
-}
-function closeModal(){
-  document.getElementById('modal').classList.remove('open');
-}
-document.getElementById('modal').addEventListener('click',e=>{
-  if(e.target===e.currentTarget) closeModal();
-});
-</script>
 
   </div>
 </div>
@@ -3063,7 +2794,7 @@ document.getElementById('modal').addEventListener('click',e=>{
 </div><!-- container sonu -->
 
 <script>
-// Flash cards data
+{// Flash cards — inline block scope (avoids const collision)
 const cards = [
   {q:"Zonguldak'ta hangi fonksiyon baskındır?", a:"Madencilik fonksiyonu (Kömür üretimi — Ereğli)"},
   {q:"Eskişehir'de hâkim fonksiyon nedir?", a:"Eğitim ve kültürel fonksiyon + Turizm (Üniversiteler + rekreasyon alanları)"},
@@ -3081,37 +2812,618 @@ const cards = [
   {q:"Ataşehir (İstanbul) hangi fonksiyonu temsil eder?", a:"Ticaret fonksiyonu (İstanbul Finans Merkezi)"},
   {q:"Adana'nın fonksiyonel dönüşümü nasıl gerçekleşti?", a:"Tarım → Sanayi → Ticaret → Eğitim/Sağlık/Ulaşım → Çok fonksiyonlu büyük il merkezi"},
 ];
-
 const grid = document.getElementById('flashGrid');
-cards.forEach((c,i) => {
-  const el = document.createElement('div');
-  el.className = 'flash-card';
-  el.innerHTML = `<div class="flash-inner">
-    <div class="flash-front">
-      <div class="flash-label">Soru ${i+1}</div>
-      <div class="flash-q">${c.q}</div>
-      <div class="flash-hint">👆 Cevap için tıkla</div>
-    </div>
-    <div class="flash-back">
-      <div class="flash-label">Cevap ${i+1}</div>
-      <div class="flash-q">${c.a}</div>
-    </div>
-  </div>`;
-  el.addEventListener('click',()=>el.classList.toggle('flipped'));
-  grid.appendChild(el);
-});
-
-// Accordion (eğer eklenirse)
-document.querySelectorAll('.acc-header').forEach(h=>{
-  h.addEventListener('click',()=>{
-    h.classList.toggle('open');
-    const body=h.nextElementSibling;
-    body.classList.toggle('open');
+if(grid && grid.children.length === 0){
+  cards.forEach((c,i) => {
+    const el = document.createElement('div');
+    el.className = 'flash-card';
+    el.innerHTML = `<div class="flash-inner">
+      <div class="flash-front">
+        <div class="flash-label">Soru ${i+1}</div>
+        <div class="flash-q">${c.q}</div>
+        <div class="flash-hint">👆 Cevap için tıkla</div>
+      </div>
+      <div class="flash-back">
+        <div class="flash-label">Cevap ${i+1}</div>
+        <div class="flash-q">${c.a}</div>
+      </div>
+    </div>`;
+    el.addEventListener('click',()=>el.classList.toggle('flipped'));
+    grid.appendChild(el);
   });
-});
+}
+}
 </script>
 
   </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FELSEFE SAYFASI
+══════════════════════════════════════ -->
+<div id="page-fel" class="page" style="background:#f5f3ff;font-family:'Segoe UI',Arial,sans-serif;color:#1a1a2e">
+<div style="padding-bottom:110px">
+
+<div style="background:linear-gradient(135deg,#1a0533 0%,#2d1b69 50%,#4c1d95 100%);color:white;padding:60px 40px;text-align:center">
+  <button onclick="goPage('ana')" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);color:white;border:1px solid rgba(255,255,255,0.25);padding:9px 20px;border-radius:20px;font-size:.88em;cursor:pointer;margin-bottom:20px;font-family:inherit;font-weight:600;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,0.28)'" onmouseout="this.style.background='rgba(255,255,255,0.18)'">← Ana Sayfa</button>
+  <h1 style="font-size:2.4em;margin-bottom:8px;letter-spacing:2px">🤔 10. SINIF FELSEFE</h1>
+  <div style="font-size:1.1em;opacity:.85;margin-bottom:18px">2. Dönem 1. Yazılı — Bilgi · Ahlak · Estetik Felsefesi</div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:10px">
+    <span style="background:#7c3aed;color:white;padding:5px 16px;border-radius:20px;font-size:.85em;font-weight:bold">BİLGİ FELSEFESİ</span>
+    <span style="background:#6d28d9;color:white;padding:5px 16px;border-radius:20px;font-size:.85em;font-weight:bold">AHLAK FELSEFESİ</span>
+    <span style="background:#5b21b6;color:white;padding:5px 16px;border-radius:20px;font-size:.85em;font-weight:bold">ESTETİK FELSEFESİ</span>
+    <span style="background:#a78bfa;color:#1a0533;padding:5px 16px;border-radius:20px;font-size:.85em;font-weight:bold">FEL.10.4.1 · FEL.10.5.1 · FEL.10.6.1</span>
+  </div>
+  <div style="margin-top:16px;opacity:.75;font-size:.87em">⭐ Sınav kapsamı: Bilgi felsefesinin konusu · Bilginin imkânı/kaynağı/doğruluk ölçütleri · Ahlak kavramları · Estetik temel problemler</div>
+</div>
+
+<div style="max-width:980px;margin:0 auto;padding:30px 18px">
+
+<!-- ÜNİTE 1: BİLGİ FELSEFESİ -->
+<div style="background:linear-gradient(90deg,#2d1b69,#7c3aed);color:white;padding:22px 30px;border-radius:14px;margin:35px 0 18px;display:flex;align-items:center;gap:16px">
+  <div style="background:#a78bfa;color:#1a0533;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold;flex-shrink:0">4</div>
+  <div><h2 style="font-size:1.5em;margin-bottom:3px">BİLGİ FELSEFESİ (EPİSTEMOLOJİ)</h2><p style="font-size:.88em;opacity:.8">FEL.10.4.1 | Bilginin konusu, temel kavramları ve problemleri</p></div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #7c3aed">
+  <h3 style="font-size:1.08em;margin-bottom:12px;display:flex;align-items:center;gap:8px;color:#4c1d95">📖 Temel Kavramlar</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0">
+    <div style="background:#f5f3ff;border-radius:8px;padding:13px;border:1px solid #ddd6fe">
+      <h4 style="font-size:.93em;margin-bottom:7px;color:#5b21b6">Bilgi (Episteme)</h4>
+      Doğruluğu kanıtlanmış ve sağlam gerekçelere dayanan inançtır. "Doğruluğu kanıtlanabilen ve gerekçelendirilebilen bir düşünce ürünü"
+    </div>
+    <div style="background:#f5f3ff;border-radius:8px;padding:13px;border:1px solid #ddd6fe">
+      <h4 style="font-size:.93em;margin-bottom:7px;color:#5b21b6">Sanı (Doksa)</h4>
+      Kesin olmayan, doğrulanmamış inanç, tahmin veya subjektif algı. Maddi varlıklar hakkında duyularla elde edilir.
+    </div>
+    <div style="background:#f5f3ff;border-radius:8px;padding:13px;border:1px solid #ddd6fe">
+      <h4 style="font-size:.93em;margin-bottom:7px;color:#5b21b6">Gerçeklik</h4>
+      Var olan her şeyin toplamıdır. Bilincimizden bağımsız nesnel dünyadır.
+    </div>
+    <div style="background:#f5f3ff;border-radius:8px;padding:13px;border:1px solid #ddd6fe">
+      <h4 style="font-size:.93em;margin-bottom:7px;color:#5b21b6">Doğruluk</h4>
+      Bilginin gerçeğe uygunluğudur. Bir önermenin gerçekliğe karşılık gelmesi hâlidir.
+    </div>
+    <div style="background:#f5f3ff;border-radius:8px;padding:13px;border:1px solid #ddd6fe">
+      <h4 style="font-size:.93em;margin-bottom:7px;color:#5b21b6">Temellendirme</h4>
+      Bir bilginin neden doğru olduğunun gerekçelendirilmesi. Bilgi için zorunlu koşuldur.
+    </div>
+    <div style="background:#f5f3ff;border-radius:8px;padding:13px;border:1px solid #ddd6fe">
+      <h4 style="font-size:.93em;margin-bottom:7px;color:#5b21b6">Epistemoloji</h4>
+      Bilgi felsefesi — "Bilgi nedir?", "Bilgiye nasıl ulaşılır?", "Bilgi mümkün mü?" sorularını inceler.
+    </div>
+  </div>
+</div>
+
+<!-- BİLGİNİN İMKANI PROBLEMİ -->
+<div style="background:linear-gradient(90deg,#4c1d95,#7c3aed);color:white;padding:14px 24px;border-radius:10px;margin:22px 0 12px;font-size:1.1em;font-weight:bold">4.2 Bilginin İmkânı Problemi — Bilgi Mümkün mü?</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #ef4444">
+  <h3 style="color:#c0392b;font-size:1.08em;margin-bottom:12px">🚫 ŞÜPHECİLİK (Septisizm) — Bilgi Mümkün Değildir</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="background:#fef5f5;border-radius:8px;padding:14px;border:1px solid #fca5a5">
+      <h4 style="color:#b91c1c;font-size:.95em;margin-bottom:8px">Gorgias</h4>
+      <ul style="padding-left:18px;font-size:.9em;line-height:1.8">
+        <li>Varlık yoktur</li>
+        <li>Olsa bile bilinemez</li>
+        <li>Bilinse bile başkalarına aktarılamaz</li>
+        <li>Duyular yanıltıcıdır; güvenilir bilgi kaynağı yoktur</li>
+      </ul>
+    </div>
+    <div style="background:#fef5f5;border-radius:8px;padding:14px;border:1px solid #fca5a5">
+      <h4 style="color:#b91c1c;font-size:.95em;margin-bottom:8px">Pyrrhon</h4>
+      <ul style="padding-left:18px;font-size:.9em;line-height:1.8">
+        <li>Duyular gerçeği değil yalnızca görünüşleri yansıtır</li>
+        <li>Algılar kişiden kişiye farklıdır</li>
+        <li>Doğruyu belirleyecek ölçüt yoktur</li>
+        <li><b>Epokhe:</b> Yargıdan kaçınma → mutluluk</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #22c55e">
+  <h3 style="color:#15803d;font-size:1.08em;margin-bottom:12px">✅ DOGMATİZM — Bilgi Mümkündür</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+    <div style="background:#f0fdf4;border-radius:8px;padding:13px;border:1px solid #86efac">
+      <h4 style="color:#15803d;font-size:.92em;margin-bottom:6px">Sokrates</h4>
+      <p style="font-size:.88em;line-height:1.6">Doğuştan bilgileri hatırlamak için <b>ironi</b> (bilgisizliği ortaya koyma) + <b>maiotik</b> (doğum yardımcılığı) yöntemi kullanılır</p>
+    </div>
+    <div style="background:#f0fdf4;border-radius:8px;padding:13px;border:1px solid #86efac">
+      <h4 style="color:#15803d;font-size:.92em;margin-bottom:6px">Platon</h4>
+      <p style="font-size:.88em;line-height:1.6">Bilgi ideaara ait, akılla elde edilir. Ruh doğumda idealar bilgisini unutur; yaşayarak hatırlar. <b>Sanı ≠ Bilgi</b></p>
+    </div>
+    <div style="background:#f0fdf4;border-radius:8px;padding:13px;border:1px solid #86efac">
+      <h4 style="color:#15803d;font-size:.92em;margin-bottom:6px">Aristoteles</h4>
+      <p style="font-size:.88em;line-height:1.6">Hem duyular hem akıl birlikte bilgiye ulaşır. Tümdengelimle varlığın genel bilgisine ulaşılır</p>
+    </div>
+  </div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #f59e0b">
+  <h3 style="color:#b45309;font-size:1.08em;margin-bottom:12px">🔍 Descartes'ın Şüphe Yöntemi — Özel Durum!</h3>
+  <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:11px 15px;border-radius:6px;margin:9px 0;font-style:italic">
+    <strong>ÖNEMLİ:</strong> Descartes septik değildir! Şüpheyi araç olarak kullanır, amaç değil.
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+    <div style="background:#fffbeb;border-radius:8px;padding:13px;border:1px solid #fde68a">
+      <h4 style="color:#92400e;font-size:.92em;margin-bottom:6px">Yöntemi</h4>
+      <ul style="padding-left:16px;font-size:.88em;line-height:1.8">
+        <li>Tüm bilgileri şüpheyle sorgular</li>
+        <li>Duyusal bilgileri reddeder (rüya argümanı)</li>
+        <li>Şüphe edilemeyen tek şeyi bulur</li>
+        <li><b>"Düşünüyorum, öyleyse varım" (Cogito)</b></li>
+      </ul>
+    </div>
+    <div style="background:#fffbeb;border-radius:8px;padding:13px;border:1px solid #fde68a">
+      <h4 style="color:#92400e;font-size:.92em;margin-bottom:6px">Apaçık Bilgiler</h4>
+      <ul style="padding-left:16px;font-size:.88em;line-height:1.8">
+        <li>Aklın kendiliğinden sahip olduğu bilgiler</li>
+        <li>Şüphe edilemez: matematik aksiyomları, geometrik doğrular</li>
+        <li>Bir kez kanıtlanan bilgiden asla şüphe etmez</li>
+        <li>Septikten farkı: şüpheyi sonuç değil araç kullanması</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- BİLGİNİN KAYNAĞI -->
+<div style="background:linear-gradient(90deg,#4c1d95,#7c3aed);color:white;padding:14px 24px;border-radius:10px;margin:22px 0 12px;font-size:1.1em;font-weight:bold">Bilginin Kaynağı Problemi — Bilgiye Nasıl Ulaşılır?</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #7c3aed">
+  <h3 style="color:#4c1d95;font-size:1.08em;margin-bottom:14px">🧠 Dört Temel Akım Karşılaştırması</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:.88em">
+    <tr style="background:#2d1b69;color:white"><th style="padding:10px 12px;text-align:left">Akım</th><th style="padding:10px 12px;text-align:left">Bilginin Kaynağı</th><th style="padding:10px 12px;text-align:left">Temsilciler</th><th style="padding:10px 12px;text-align:left">Anahtar Kavram</th></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#4c1d95">Rasyonalizm (Akılcılık)</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Akıl</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Sokrates, Platon, Descartes, Hegel, İbn Sina, Farabi</td><td style="padding:9px 12px;border-bottom:1px solid #eee"><b>Apriori bilgi</b> (deney öncesi)</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#1a5276">Empirizm (Deneycilik)</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Duyu ve Deney</td><td style="padding:9px 12px;border-bottom:1px solid #eee">J. Locke (boş levha), D. Hume</td><td style="padding:9px 12px;border-bottom:1px solid #eee"><b>Aposteriori bilgi</b> (deney sonrası)</td></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#b45309">Kritisizm (Eleştiricilik)</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Akıl + Deney birlikte</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Immanuel Kant</td><td style="padding:9px 12px;border-bottom:1px solid #eee"><b>Kategoriler</b> — zihinsel çerçeveler</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;font-weight:700;color:#065f46">Entüisyonizm (Sezgicilik)</td><td style="padding:9px 12px">Sezgi</td><td style="padding:9px 12px">Gazali (mistik), H. Bergson</td><td style="padding:9px 12px"><b>Mutlak bilgi</b> sezgiyle, bilimsel bilgi akılla</td></tr>
+  </table>
+  <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 15px;border-radius:6px;margin:12px 0;font-size:.9em">
+    <b>⚠️ Kant'ın ünlü sözü:</b> "Görüsüz (deneysiz) kavramlar boş, kavramsız (aklın kategorileri olmaksızın) görüler kördür." → Akıl ve deney birlikte gereklidir.
+  </div>
+</div>
+
+<!-- DOĞRULUK ÖLÇÜTLERİ -->
+<div style="background:linear-gradient(90deg,#4c1d95,#7c3aed);color:white;padding:14px 24px;border-radius:10px;margin:22px 0 12px;font-size:1.1em;font-weight:bold">Bilginin Doğruluk Ölçütleri Problemi</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #06b6d4">
+  <h3 style="color:#0e7490;font-size:1.08em;margin-bottom:14px">⚖️ Dört Doğruluk Teorisi</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="background:#ecfeff;border-radius:8px;padding:14px;border:1px solid #a5f3fc">
+      <h4 style="color:#0e7490;font-size:.93em;margin-bottom:6px">1. Uygunluk (Korrespondans)</h4>
+      <p style="font-size:.88em;line-height:1.6">Bilginin gerçeklikle örtüşmesidir. "Kar beyazdır" ifadesi, karın gerçekten beyaz olması hâlinde doğrudur.</p>
+      <div style="background:#cffafe;padding:6px 10px;border-radius:4px;font-size:.82em;margin-top:6px"><b>Kullanım:</b> Doğa bilimleri, günlük hayat</div>
+    </div>
+    <div style="background:#ecfeff;border-radius:8px;padding:14px;border:1px solid #a5f3fc">
+      <h4 style="color:#0e7490;font-size:.93em;margin-bottom:6px">2. Tutarlılık (Koherans)</h4>
+      <p style="font-size:.88em;line-height:1.6">Bilginin diğer bilgilerle çelişmemesi, mantıksal tutarlılık içinde olması. İç çelişki yoksa doğrudur.</p>
+      <div style="background:#cffafe;padding:6px 10px;border-radius:4px;font-size:.82em;margin-top:6px"><b>Kullanım:</b> Matematik, mantık, hukuk</div>
+    </div>
+    <div style="background:#ecfeff;border-radius:8px;padding:14px;border:1px solid #a5f3fc">
+      <h4 style="color:#0e7490;font-size:.93em;margin-bottom:6px">3. Tümel Uzlaşım</h4>
+      <p style="font-size:.88em;line-height:1.6">Uzman görüşleri ve toplumun genel kabulüyle uyumlu olan bilgi doğrudur. Deniz'in kullandığı ölçüt.</p>
+      <div style="background:#cffafe;padding:6px 10px;border-radius:4px;font-size:.82em;margin-top:6px"><b>Kullanım:</b> Bilim, tıp, hukuk</div>
+    </div>
+    <div style="background:#ecfeff;border-radius:8px;padding:14px;border:1px solid #a5f3fc">
+      <h4 style="color:#0e7490;font-size:.93em;margin-bottom:6px">4. Yarar (Pragmatizm)</h4>
+      <p style="font-size:.88em;line-height:1.6">Pratikte yararlı olan ve işe yarayan bilgi doğrudur. Havva'nın kullandığı ölçüt (tedavi işe yarıyorsa doğru).</p>
+      <div style="background:#cffafe;padding:6px 10px;border-radius:4px;font-size:.82em;margin-top:6px"><b>Kullanım:</b> Mühendislik, tıp uygulaması</div>
+    </div>
+  </div>
+</div>
+
+<!-- AHLAK FELSEFESİ -->
+<div style="background:linear-gradient(90deg,#1e3a5f,#2980b9);color:white;padding:22px 30px;border-radius:14px;margin:35px 0 18px;display:flex;align-items:center;gap:16px">
+  <div style="background:#60a5fa;color:#1e3a5f;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold;flex-shrink:0">5</div>
+  <div><h2 style="font-size:1.5em;margin-bottom:3px">AHLAK FELSEFESİ (ETİK)</h2><p style="font-size:.88em;opacity:.8">FEL.10.5.1 | Ahlak felsefesinin kavramları ve temel problemleri</p></div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #2980b9">
+  <h3 style="color:#1a3a5c;font-size:1.08em;margin-bottom:12px">📚 Temel Kavramlar</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+    <div style="background:#eaf4fd;border-radius:8px;padding:12px;border:1px solid #aed6f1"><h4 style="color:#1a5276;font-size:.9em;margin-bottom:5px">Ahlak</h4><p style="font-size:.85em">İnsanların toplumsal davranışlarını düzenleyen yazısız kurallar toplamı</p></div>
+    <div style="background:#eaf4fd;border-radius:8px;padding:12px;border:1px solid #aed6f1"><h4 style="color:#1a5276;font-size:.9em;margin-bottom:5px">Etik</h4><p style="font-size:.85em">Ahlakın felsefi incelemesi — iyi/kötü davranışları analiz eder</p></div>
+    <div style="background:#eaf4fd;border-radius:8px;padding:12px;border:1px solid #aed6f1"><h4 style="color:#1a5276;font-size:.9em;margin-bottom:5px">Erdem</h4><p style="font-size:.85em">Cesaret, fedakârlık gibi yüksek ahlaki değerlere sahip olma ve bu değerlere göre davranma</p></div>
+    <div style="background:#eaf4fd;border-radius:8px;padding:12px;border:1px solid #aed6f1"><h4 style="color:#1a5276;font-size:.9em;margin-bottom:5px">Vicdan</h4><p style="font-size:.85em">Kişinin kendi eylemlerini ahlaki açıdan değerlendirmesi; iç ses</p></div>
+    <div style="background:#eaf4fd;border-radius:8px;padding:12px;border:1px solid #aed6f1"><h4 style="color:#1a5276;font-size:.9em;margin-bottom:5px">Özgürlük</h4><p style="font-size:.85em">Kişinin kendi kararlarını verebilmesi; iradeyle seçim yapabilme hâli</p></div>
+    <div style="background:#eaf4fd;border-radius:8px;padding:12px;border:1px solid #aed6f1"><h4 style="color:#1a5276;font-size:.9em;margin-bottom:5px">Sorumluluk</h4><p style="font-size:.85em">Özgür irade ile yapılan eylemlerden hesap verebilir olma</p></div>
+  </div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #e67e22">
+  <h3 style="color:#d35400;font-size:1.08em;margin-bottom:14px">🌍 Evrensel Ahlak Yasası — Var mı, Yok mu?</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div>
+      <div style="background:#d5f5e3;border-radius:8px;padding:14px;border:1px solid #82e0aa;margin-bottom:10px">
+        <h4 style="color:#1e8449;margin-bottom:8px">✅ EVRENSEL AHLAK YASASI VAR DİYENLER</h4>
+        <ul style="padding-left:16px;font-size:.88em;line-height:1.9">
+          <li><b>Sokrates:</b> Kötülük bilgisizlikten gelir; iyi bilinirse iyi yapılır</li>
+          <li><b>Farabi:</b> Mutluluk bilgiyle mümkün; peygamber bilgilerine uymak iyidir</li>
+          <li><b>Kant:</b> Ödev bilinciyle, evrensel yasaya uygun, iyi niyetle yapılan eylem iyidir</li>
+          <li><b>J.S. Mill:</b> En çok sayıda insana en fazla mutluluğu sağlayan eylem iyidir (Faydacılık)</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div style="background:#fde8e8;border-radius:8px;padding:14px;border:1px solid #f1948a;margin-bottom:10px">
+        <h4 style="color:#c0392b;margin-bottom:8px">❌ EVRENSEL AHLAK YASASI YOK DİYENLER</h4>
+        <ul style="padding-left:16px;font-size:.88em;line-height:1.9">
+          <li><b>Epiküros:</b> Haz iyidir; hazlar kişiden kişiye değişir → değerler görelidir</li>
+          <li><b>T. Hobbes:</b> İyi = haz veren şey; ahlaki yargılar psikolojik/kişiseldir</li>
+          <li><b>M. Stirner:</b> İnsan sadece kendine karşı sorumlu; herkes kendi değerini belirler</li>
+          <li><b>J. Bentham:</b> Fayda sağlayan iyidir; herkese göre fayda farklı → evrensel iyi yok</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div style="background:#fff3cd;border-left:4px solid #f39c12;padding:10px 15px;border-radius:6px;margin-top:8px;font-size:.9em">
+    <b>⚠️ Dikkat:</b> Kant'ın ahlak anlayışında davranışın <b>sonucu değil, niyeti</b> önemlidir! Eylemin ahlaki değeri niyetten belirlenir.
+  </div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #8e44ad">
+  <h3 style="color:#6c3483;font-size:1.08em;margin-bottom:14px">🔗 Özgürlük–Sorumluluk İlişkisi</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:.88em">
+    <tr style="background:#6c3483;color:white"><th style="padding:9px 12px;text-align:left">Görüş</th><th style="padding:9px 12px;text-align:left">Özgürlük?</th><th style="padding:9px 12px;text-align:left">Sorumluluk?</th><th style="padding:9px 12px;text-align:left">Temsilci</th></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700">Determinizm</td><td style="padding:9px 12px;border-bottom:1px solid #eee">❌ Yok — her şey neden-sonuç zinciriyle belirlenmiş</td><td style="padding:9px 12px;border-bottom:1px solid #eee">❌ Tutulamaz</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Schopenhauer</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700">İndeterminizm</td><td style="padding:9px 12px;border-bottom:1px solid #eee">✅ Var — insan eylemleri tamamen belirlenmiş değil</td><td style="padding:9px 12px;border-bottom:1px solid #eee">✅ Tutulabilir</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Sartre</td></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700">Fatalizm</td><td style="padding:9px 12px;border-bottom:1px solid #eee">❌ Yok — tüm olaylar Tanrı tarafından belirlenmiş</td><td style="padding:9px 12px;border-bottom:1px solid #eee">⚡ Kısmen tutulabilir</td><td style="padding:9px 12px;border-bottom:1px solid #eee">—</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;font-weight:700">Otodeterminizm</td><td style="padding:9px 12px">✅ Bilinçli seçimlerle kazanılır</td><td style="padding:9px 12px">✅ Tutulabilir</td><td style="padding:9px 12px">Kant, Spinoza</td></tr>
+  </table>
+</div>
+
+<!-- ESTETİK FELSEFESİ -->
+<div style="background:linear-gradient(90deg,#7d1553,#c0125c);color:white;padding:22px 30px;border-radius:14px;margin:35px 0 18px;display:flex;align-items:center;gap:16px">
+  <div style="background:#f9a8d4;color:#7d1553;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold;flex-shrink:0">6</div>
+  <div><h2 style="font-size:1.5em;margin-bottom:3px">ESTETİK VE SANAT FELSEFESİ</h2><p style="font-size:.88em;opacity:.8">FEL.10.6.1 | Güzellik ve ortak estetik yargıların imkânı</p></div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #c0125c">
+  <h3 style="color:#7d1553;font-size:1.08em;margin-bottom:12px">🎨 Temel Kavramlar</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+    <div style="background:#fef0f6;border-radius:8px;padding:12px;border:1px solid #f48fb1"><h4 style="color:#880e4f;font-size:.9em;margin-bottom:5px">Estetik</h4><p style="font-size:.85em">Doğadaki ve sanat eserlerindeki güzelliği konu edinen felsefi alan</p></div>
+    <div style="background:#fef0f6;border-radius:8px;padding:12px;border:1px solid #f48fb1"><h4 style="color:#880e4f;font-size:.9em;margin-bottom:5px">Estetik Haz</h4><p style="font-size:.85em">Estetik deneyim sırasında duyulan hoşnutluk ve tatmin duygusu</p></div>
+    <div style="background:#fef0f6;border-radius:8px;padding:12px;border:1px solid #f48fb1"><h4 style="color:#880e4f;font-size:.9em;margin-bottom:5px">Estetik Yargı</h4><p style="font-size:.85em">Estetik nesne hakkında yapılan değerlendirme sonucunda verilen hüküm</p></div>
+    <div style="background:#fef0f6;border-radius:8px;padding:12px;border:1px solid #f48fb1"><h4 style="color:#880e4f;font-size:.9em;margin-bottom:5px">Sanat Eseri</h4><p style="font-size:.85em">İnsan tarafından üretilen, estetik değer taşıyan, biricik ve özgün ürün</p></div>
+    <div style="background:#fef0f6;border-radius:8px;padding:12px;border:1px solid #f48fb1"><h4 style="color:#880e4f;font-size:.9em;margin-bottom:5px">Estetik Tavır</h4><p style="font-size:.85em">Bir nesneye çıkar gözetmeksizin yalnızca estetik bakış açısıyla yaklaşma</p></div>
+    <div style="background:#fef0f6;border-radius:8px;padding:12px;border:1px solid #f48fb1"><h4 style="color:#880e4f;font-size:.9em;margin-bottom:5px">Güzellik</h4><p style="font-size:.85em">Kişide estetik haz, beğenme duygusu uyandıran nitelik</p></div>
+  </div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #c0125c">
+  <h3 style="color:#7d1553;font-size:1.08em;margin-bottom:14px">⚖️ Güzellik Öznel mi, Nesnel mi? — Filozofların Görüşleri</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:.88em">
+    <tr style="background:#7d1553;color:white"><th style="padding:9px 12px;text-align:left">Filozof</th><th style="padding:9px 12px;text-align:left">Güzellik Yargısı</th><th style="padding:9px 12px;text-align:left">Ortak Estetik Yargı?</th><th style="padding:9px 12px;text-align:left">Anahtar Görüş</th></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700">Platon</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Nesnel</td><td style="padding:9px 12px;border-bottom:1px solid #eee;color:#15803d">✅ Kabul eder</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Güzellik değişmez bir ideadır; akılla kavranır</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700">I. Kant</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Öznel ama evrensel</td><td style="padding:9px 12px;border-bottom:1px solid #eee;color:#15803d">✅ Kabul eder</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Güzel = çıkarsız hoşa giden; evrensel beğeni talep eder</td></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700">A. Baumgarten</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Duyusal + Nesnel</td><td style="padding:9px 12px;border-bottom:1px solid #eee;color:#15803d">✅ Kabul eder</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Güzellik duyusal bilginin yetkinliğidir; ortak temeller var</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;font-weight:700">B. Croce</td><td style="padding:9px 12px">Tamamen Öznel</td><td style="padding:9px 12px;color:#c0392b">❌ Reddeder</td><td style="padding:9px 12px">Güzellik izleyenin gözündedir; her deneyim biriciktir</td></tr>
+  </table>
+  <div style="background:#fdf2f8;border-left:4px solid #c0125c;padding:10px 15px;border-radius:6px;margin-top:12px;font-size:.9em">
+    <b>Sanat Kuramları:</b> <b>Taklit (Platon):</b> Sanat gerçeğin kopyasıdır. | <b>Yaratım (Croce):</b> Sanat sanatçının iç dünyasını yansıtır. | <b>Oyun (Schiller):</b> Sanat özgür, kural tanımaz bir etkinliktir.
+  </div>
+</div>
+
+<!-- FLASH KARTLAR -->
+<div style="background:linear-gradient(90deg,#2d1b69,#7c3aed);color:white;padding:14px 24px;border-radius:10px;margin:22px 0 12px;font-size:1.1em;font-weight:bold">🃏 Flash Kartlar — Hızlı Tekrar</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:14px 0" id="felFlashGrid"></div>
+
+<!-- ÖZET TABLO -->
+<div style="background:linear-gradient(135deg,#f5f3ff,#fdf4ff);border-left:8px solid #7c3aed;border-radius:12px;padding:22px;margin-top:24px">
+  <h3 style="color:#4c1d95;margin-bottom:16px">🎯 Son Tekrar — Sınav Odaklı Önemli Noktalar</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:.9em">
+    <div>
+      <h4 style="color:#7c3aed;border-bottom:1px dotted #ddd6fe;padding-bottom:4px;margin-bottom:8px">Bilgi Felsefesi</h4>
+      <ul style="padding-left:18px;line-height:1.9">
+        <li>Bilgi ≠ Sanı — doğru + gerekçeli inanç</li>
+        <li>Septisizm: Gorgias (3 tez) + Pyrrhon (epokhe)</li>
+        <li>Dogmatizm: Sokrates + Platon + Aristoteles</li>
+        <li>Descartes: Araç olarak şüphe → Cogito</li>
+        <li>Apriori = deney öncesi (Rasyonalizm)</li>
+        <li>Aposteriori = deney sonrası (Empirizm)</li>
+        <li>Kant: İkisini birleştirir (Kritisizm)</li>
+        <li>Doğruluk: Uygunluk / Tutarlılık / Uzlaşım / Yarar</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color:#7c3aed;border-bottom:1px dotted #ddd6fe;padding-bottom:4px;margin-bottom:8px">Ahlak & Estetik</h4>
+      <ul style="padding-left:18px;line-height:1.9">
+        <li>Evrensel yasa VAR: Sokrates, Farabi, Kant, J.S. Mill</li>
+        <li>Evrensel yasa YOK: Epiküros, Hobbes, Stirner, Bentham</li>
+        <li>Kant: Niyet önemli, sonuç değil — ödev etiği</li>
+        <li>Determinizm: özgürlük yok → sorumluluk yok</li>
+        <li>İndeterminizm: özgürlük var → sorumluluk var</li>
+        <li>Güzellik nesnel: Platon, Kant (evrensel talep)</li>
+        <li>Güzellik öznel: Croce (yargılar kişiseldir)</li>
+        <li>Sanat = taklit (Platon) / yaratım (Croce) / oyun (Schiller)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- container sonu -->
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     DİN KÜLTÜRÜ SAYFASI
+══════════════════════════════════════ -->
+<div id="page-din" class="page" style="background:#f0fdfa;font-family:'Segoe UI',Arial,sans-serif;color:#1a1a2e">
+<div style="padding-bottom:110px">
+
+<div style="background:linear-gradient(135deg,#042f2e 0%,#065f46 50%,#047857 100%);color:white;padding:60px 40px;text-align:center">
+  <button onclick="goPage('ana')" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);color:white;border:1px solid rgba(255,255,255,0.25);padding:9px 20px;border-radius:20px;font-size:.88em;cursor:pointer;margin-bottom:20px;font-family:inherit;font-weight:600;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,0.28)'" onmouseout="this.style.background='rgba(255,255,255,0.18)'">← Ana Sayfa</button>
+  <h1 style="font-size:2.4em;margin-bottom:8px;letter-spacing:2px">☪️ 10. SINIF DİN KÜLTÜRÜ VE A.B.</h1>
+  <div style="font-size:1.1em;opacity:.85;margin-bottom:18px">2. Dönem 1. Yazılı — 3. Ünite: İslam'ın Evrensel Mesajları</div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:10px">
+    <span style="background:#14b8a6;color:white;padding:5px 16px;border-radius:20px;font-size:.85em;font-weight:bold">TEVHİT İLKESİ</span>
+    <span style="background:#0d9488;color:white;padding:5px 16px;border-radius:20px;font-size:.85em;font-weight:bold">ADALET VE EŞİTLİK</span>
+    <span style="background:#0f766e;color:white;padding:5px 16px;border-radius:20px;font-size:.85em;font-weight:bold">İSLAM VE BARIŞ</span>
+    <span style="background:#99f6e4;color:#042f2e;padding:5px 16px;border-radius:20px;font-size:.85em;font-weight:bold">KUR'AN'DAN MESAJLAR</span>
+  </div>
+  <div style="margin-top:16px;opacity:.75;font-size:.87em">⭐ Kapsam: DKAB.10.3.1–3.4 | Sayfa 80–113 | Nahl 90 · Nisa 58 · Bakara 208</div>
+</div>
+
+<div style="max-width:980px;margin:0 auto;padding:30px 18px">
+
+<!-- ÜNİTE BAŞLIĞI 3.1 -->
+<div style="background:linear-gradient(90deg,#065f46,#14b8a6);color:white;padding:22px 30px;border-radius:14px;margin:35px 0 18px;display:flex;align-items:center;gap:16px">
+  <div style="background:#99f6e4;color:#042f2e;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold;flex-shrink:0">3.1</div>
+  <div><h2 style="font-size:1.5em;margin-bottom:3px">İSLAM'IN TEVHİT İLKESİ</h2><p style="font-size:.88em;opacity:.8">DKAB.10.3.1 | Tevhit ilkesi hakkında bilgi toplayabilme</p></div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #14b8a6">
+  <h3 style="color:#065f46;font-size:1.08em;margin-bottom:12px">📖 Tevhit Nedir?</h3>
+  <div style="background:#ccfbf1;border-left:4px solid #14b8a6;padding:11px 15px;border-radius:6px;margin:9px 0;font-style:italic">
+    <strong>Tevhit:</strong> Allah'ın bir ve tek olduğunu bilmek; O'ndan başka ilah bulunmadığına, eşinin ve ortağının olmadığına inanmak. İslam'ın <strong>temel ilkesi</strong>dir.
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0">
+    <div style="background:#ecfdf5;border-radius:8px;padding:13px;border:1px solid #6ee7b7">
+      <h4 style="color:#047857;font-size:.9em;margin-bottom:6px">Tevhitin 1. Boyutu</h4>
+      <p style="font-size:.85em">Allah'ın gerçek Rab olduğunu kabul etmek; yaratıcı, hayat ve rızık verici olduğuna, ortağının bulunmadığına inanmak</p>
+    </div>
+    <div style="background:#ecfdf5;border-radius:8px;padding:13px;border:1px solid #6ee7b7">
+      <h4 style="color:#047857;font-size:.9em;margin-bottom:6px">Tevhitin 2. Boyutu</h4>
+      <p style="font-size:.85em">İbadetleri sadece Allah için yapmak, yalnız O'ndan yardım istemek</p>
+    </div>
+    <div style="background:#ecfdf5;border-radius:8px;padding:13px;border:1px solid #6ee7b7">
+      <h4 style="color:#047857;font-size:.9em;margin-bottom:6px">Tevhitin 3. Boyutu</h4>
+      <p style="font-size:.85em">Allah'ın isim ve sıfatlarının ifade ettiği niteliklerin yalnız O'na özgü olduğunu kabul etmek</p>
+    </div>
+  </div>
+  <div style="background:#fdf2f2;border-left:4px solid #e94560;padding:10px 15px;border-radius:6px;margin:9px 0;font-size:.9em">
+    <b>Şirk (Tevhidin Zıttı):</b> Allah'a başka varlıkları ortak/denk görmek. Allah Nisa 116'da şirk dışındaki günahları bağışlayabileceğini, şirki asla bağışlamayacağını bildirmiştir.
+  </div>
+  <div style="background:#ecfdf5;border-left:4px solid #14b8a6;padding:10px 15px;border-radius:6px;margin:9px 0;font-size:.9em">
+    <b>İhlas Suresi:</b> "De ki: O, Allah'tır, bir tektir. Allah Samed'dir. O'ndan çocuk olmamıştır. Kendisi de doğmamıştır. Hiçbir şey O'na denk değildir."
+  </div>
+  <p style="font-size:.9em;line-height:1.7">Tüm peygamberlerin ortak mesajı <b>tevhittir</b>. Hz. Nuh'tan Hz. Muhammed'e kadar tüm peygamberler şirkle mücadele etmiş, kavimlerini Allah'ın birliğine davet etmiştir.</p>
+</div>
+
+<!-- 3.2 ADALET -->
+<div style="background:linear-gradient(90deg,#1a3a5c,#2980b9);color:white;padding:22px 30px;border-radius:14px;margin:35px 0 18px;display:flex;align-items:center;gap:16px">
+  <div style="background:#93c6f0;color:#1a3a5c;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold;flex-shrink:0">3.2</div>
+  <div><h2 style="font-size:1.5em;margin-bottom:3px">İSLAM'DA ADALET VE EŞİTLİK</h2><p style="font-size:.88em;opacity:.8">DKAB.10.3.2 | Adalet ve eşitlik ilkeleri arasında ilişki kurabilme</p></div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #2980b9">
+  <h3 style="color:#1a3a5c;font-size:1.08em;margin-bottom:14px">⚖️ Adaletin İlkeleri — Tüm Detaylar</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:.88em">
+    <tr style="background:#1a3a5c;color:white"><th style="padding:10px 12px;text-align:left">İlke</th><th style="padding:10px 12px;text-align:left">Tanım</th></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#1a5276">Eşitlik</td><td style="padding:9px 12px;border-bottom:1px solid #eee">İnsanların eşit olarak doğduğu gerçeğiyle herkesin aynı haklara sahip olduğunu kabul etmek; kanunların ayrımcı olmaması</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#1a5276">Hesap Verebilirlik</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Alınan kararlar ve sonuçlarından sorumlu olmak — Allah'a, aileye, topluma karşı hesap verebilmek</td></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#1a5276">Tarafsızlık</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Hiç kimseye dil, ırk, cinsiyet, din, mezhep gibi nedenlerle ayrım yapmamak</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#1a5276">Şeffaflık</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Açıklık, dürüstlük, erişilebilirlik, denetlenebilirlik prensipleriyle yürütme. Şeffaflığın olmadığı yerde yolsuzluk kaçınılmaz</td></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#1a5276">Liyakat</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Görevi başarıyla yapabilme yetisi. Görev ve sorumlulukların ehil kişilere verilmesi</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#1a5276">Emanet</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Maddi ve manevi korunması gereken değer. Devlet makamları da emanettir; rüşvet almamak emanet ilkesiyle ilgilidir</td></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#1a5276">Dürüstlük</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Gerçeği söylemek, doğru davranmak, ahlaki değerlere uygun hareket etmek</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#1a5276">Hakkaniyet</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Bireysel farklılıklara özen göstererek sadece hakkı olana razı olma; her olayın kendi özelliklerine göre karar verme</td></tr>
+    <tr><td style="padding:9px 12px;border-bottom:1px solid #eee;font-weight:700;color:#1a5276">Ahde Vefa</td><td style="padding:9px 12px;border-bottom:1px solid #eee">Allah'a ve insanlara verilen sözün yerine getirilmesi; anlaşmalara sadık kalma</td></tr>
+    <tr style="background:#f8f9fa"><td style="padding:9px 12px;font-weight:700;color:#1a5276">İnsanın Saygınlığı</td><td style="padding:9px 12px">İnsan, herhangi bir sebebe bağlı olmaksızın sadece insan olmasından dolayı saygın ve dokunulmazdır</td></tr>
+  </table>
+  <div style="background:#eaf4fd;border-left:4px solid #2980b9;padding:11px 15px;border-radius:6px;margin:12px 0;font-size:.9em;font-style:italic">
+    <b>Temel Ayet — Nisa 58:</b> "Şüphesiz Allah size <b>emanetleri ehline vermenizi</b> ve insanlar arasında hükmettiğinizde de <b>adaletle hükmetmenizi</b> emreder."
+  </div>
+  <div style="background:#fef9e7;border-left:4px solid #f39c12;padding:10px 15px;border-radius:6px;margin:8px 0;font-size:.9em">
+    <b>Veda Hutbesi:</b> "Rabbiniz birdir, atanız da birdir. Arap'ın Arap olmayana, Arap olmayanın Arap'a; beyazın siyaha, siyahın beyaza takva dışında bir üstünlüğü yoktur." → <b>Üstünlük sadece takva ile!</b>
+  </div>
+  <div style="background:#eaf4fd;border-left:4px solid #2980b9;padding:10px 15px;border-radius:6px;font-size:.9em">
+    <b>Adl ismi:</b> Allah'ın adil olması — her varlığa yaratılışına uygun imkân ve kabiliyet bahşetmesi
+  </div>
+</div>
+
+<!-- 3.3 İSLAM VE BARIŞ -->
+<div style="background:linear-gradient(90deg,#4a235a,#8e44ad);color:white;padding:22px 30px;border-radius:14px;margin:35px 0 18px;display:flex;align-items:center;gap:16px">
+  <div style="background:#d7bde2;color:#4a235a;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold;flex-shrink:0">3.3</div>
+  <div><h2 style="font-size:1.5em;margin-bottom:3px">İSLAM VE BARIŞ</h2><p style="font-size:.88em;opacity:.8">DKAB.10.3.3 | İslam ve barış ilişkisini yorumlayabilme</p></div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #8e44ad">
+  <h3 style="color:#6c3483;font-size:1.08em;margin-bottom:12px">🕊️ İslam — Barış Dini</h3>
+  <div style="background:#f5f0fb;border-left:4px solid #8e44ad;padding:11px 15px;border-radius:6px;margin:9px 0;font-style:italic">
+    <strong>İslam kelimesi:</strong> S-L-M kökünden — "kurtuluşa erme, güven ve emniyette olma, sulh ve barış yapma" anlamlarına gelir. Selam da Allah'ın ismidir.
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0">
+    <div style="background:#f5f0fb;border-radius:8px;padding:14px;border:1px solid #d2b4de">
+      <h4 style="color:#6c3483;font-size:.93em;margin-bottom:8px">Cihat — Genel Anlam</h4>
+      <ul style="padding-left:16px;font-size:.88em;line-height:1.9">
+        <li>İnsanlığın huzurunu korumak için bütün imkânlarla çaba göstermek</li>
+        <li>Din, vatan, namus, mal, can güvenliği için mücadele</li>
+        <li>Allah'ın rızasını kazanmak için her alanda gayret (ekonomi, kültür, teknoloji)</li>
+        <li>"Ellerinizle, dillerinizle ve mallarınızla cihad ediniz"</li>
+      </ul>
+    </div>
+    <div style="background:#f5f0fb;border-radius:8px;padding:14px;border:1px solid #d2b4de">
+      <h4 style="color:#6c3483;font-size:.93em;margin-bottom:8px">Küçük Cihat vs Büyük Cihat</h4>
+      <ul style="padding-left:16px;font-size:.88em;line-height:1.9">
+        <li><b>Küçük cihat:</b> Cephede düşmanla yapılan savaş — zorunlu hâllerde</li>
+        <li><b>Büyük cihat:</b> Kişinin kendi nefsiyle mücadelesi (mücahede)</li>
+        <li>Kötü düşünceler ve meşru olmayan isteklere karşı iç mücadele</li>
+        <li>Nefsi terbiye eden kişi özgürleşir</li>
+      </ul>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0">
+    <div style="background:#fef5f5;border-radius:8px;padding:14px;border:1px solid #f1948a">
+      <h4 style="color:#c0392b;font-size:.93em;margin-bottom:6px">Farzıkifaye Cihat</h4>
+      <p style="font-size:.88em;line-height:1.7">Yeterli ordu varsa diğerleri için savaş farzıkifaye olur. İslam'ı anlatma ve iyiliği emretme görevi de farzıkifayedir.</p>
+    </div>
+    <div style="background:#d5f5e3;border-radius:8px;padding:14px;border:1px solid #82e0aa">
+      <h4 style="color:#1e8449;font-size:.93em;margin-bottom:6px">Farzıayn Cihat</h4>
+      <p style="font-size:.88em;line-height:1.7">Ordu yetersiz kalırsa herkesin vatan/din/namus savunması farzıayndır. Kişinin nefsini terbiye etmesi de farzıayndır.</p>
+    </div>
+  </div>
+  <div style="background:#fff3cd;border-left:4px solid #f39c12;padding:10px 15px;border-radius:6px;margin:9px 0;font-size:.9em">
+    <b>Medine Vesikası:</b> Hz. Muhammed'in farklı inançlardaki topluluklarla yaptığı anlaşma — eşit vatandaşlık, din özgürlüğü, birlikte savunma. Barışçıl birlikte yaşama modeli.
+  </div>
+  <div style="background:#eaf4fd;border-left:4px solid #2980b9;padding:10px 15px;border-radius:6px;font-size:.9em">
+    <b>Bakara 208:</b> "Ey iman edenler! Hepiniz topluca barışa (İslam'a) girin. Şeytanın adımlarını izlemeyin; çünkü o, size apaçık bir düşmandır."
+  </div>
+</div>
+
+<!-- 3.4 KUR'AN'DAN MESAJLAR -->
+<div style="background:linear-gradient(90deg,#1a3a1a,#2e7d32);color:white;padding:22px 30px;border-radius:14px;margin:35px 0 18px;display:flex;align-items:center;gap:16px">
+  <div style="background:#a5d6a7;color:#1a3a1a;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold;flex-shrink:0">3.4</div>
+  <div><h2 style="font-size:1.5em;margin-bottom:3px">KUR'AN'DAN MESAJLAR</h2><p style="font-size:.88em;opacity:.8">DKAB.10.3.4 | Nahl 90 · Nisa 58 · Bakara 208 mesajlarını özetleyebilme</p></div>
+</div>
+
+<div style="background:white;border-radius:12px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #2e7d32">
+  <h3 style="color:#1b5e20;font-size:1.08em;margin-bottom:16px">📜 Üç Temel Ayet — Tam Analiz</h3>
+
+  <div style="background:#e8f5e9;border-radius:10px;padding:18px;margin-bottom:16px;border:1px solid #a5d6a7">
+    <h4 style="color:#1b5e20;margin-bottom:10px">1. NAHL SURESİ 90. AYET</h4>
+    <div style="background:#fff;padding:12px;border-radius:8px;border-left:4px solid #2e7d32;font-style:italic;margin-bottom:12px;font-size:.92em">
+      "Şüphesiz Allah, adaleti, iyilik yapmayı, yakınlara yardım etmeyi emreder; çirkin işleri, fenalık ve haddi aşmayı yasaklar."
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div>
+        <h5 style="color:#2e7d32;margin-bottom:6px;font-size:.9em">✅ Emredilenler</h5>
+        <ul style="padding-left:16px;font-size:.88em;line-height:1.8">
+          <li><b>Adalet (Adl):</b> Herkese hakkını vermek; eşitlik veya denge</li>
+          <li><b>İhsan:</b> Allah'ı görür gibi ibadet; başkasına iyilik; yaptığını güzel yapma</li>
+          <li><b>Akrabaya yardım (İyta-i zil kurbâ):</b> Maddi ve manevi destek</li>
+        </ul>
+      </div>
+      <div>
+        <h5 style="color:#c0392b;margin-bottom:6px;font-size:.9em">❌ Yasaklananlar</h5>
+        <ul style="padding-left:16px;font-size:.88em;line-height:1.8">
+          <li><b>Fahşâ:</b> Hayasızlık; edep ve iffete aykırı söz/davranış; zina başta</li>
+          <li><b>Münker:</b> Kötülük; aklın ve sağduyunun çirkin bulduğu davranışlar</li>
+          <li><b>Bağy:</b> Zorbalık; genel ahlak kurallarını aşan, hakları çiğneyen davranış</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#e3f2fd;border-radius:10px;padding:18px;margin-bottom:16px;border:1px solid #90caf9">
+    <h4 style="color:#0d47a1;margin-bottom:10px">2. NİSA SURESİ 58. AYET</h4>
+    <div style="background:#fff;padding:12px;border-radius:8px;border-left:4px solid #1565c0;font-style:italic;margin-bottom:12px;font-size:.92em">
+      "Allah size, emanetleri mutlaka ehline vermenizi ve insanlar arasında hükmettiğiniz zaman adaletle hükmetmenizi emreder."
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:#fff;border-radius:8px;padding:12px">
+        <h5 style="color:#0d47a1;margin-bottom:6px;font-size:.9em">Nüzul Sebebi</h5>
+        <p style="font-size:.88em;line-height:1.6">Hz. Muhammed Mekke'yi fettedince Kabe anahtarını tutan Osman bin Talha'dan almıştı. Amcası Hz. Abbas anahtarı istedi. Bunun üzerine ayet indi ve anahtar yine Osman'a verildi → Emanetin ehline verilmesi!</p>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:12px">
+        <h5 style="color:#0d47a1;margin-bottom:6px;font-size:.9em">Anahtar Kavramlar</h5>
+        <ul style="padding-left:16px;font-size:.88em;line-height:1.8">
+          <li><b>Emanet:</b> Din, ilim, anlaşmalar, nimetler, kamu malları, devlet makamları</li>
+          <li><b>Ehliyet:</b> Liyakat — yeterli olan kişiye verme</li>
+          <li><b>Adalet:</b> Hüküm verirken hakkaniyetle karar verme</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#ede7f6;border-radius:10px;padding:18px;border:1px solid #ce93d8">
+    <h4 style="color:#4a148c;margin-bottom:10px">3. BAKARA SURESİ 208. AYET</h4>
+    <div style="background:#fff;padding:12px;border-radius:8px;border-left:4px solid #6a1b9a;font-style:italic;margin-bottom:12px;font-size:.92em">
+      "Ey iman edenler! Hepiniz topluca barışa (İslam'a) girin. Şeytanın adımlarını izlemeyin; çünkü o, size apaçık bir düşmandır."
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:#fff;border-radius:8px;padding:12px">
+        <h5 style="color:#4a148c;margin-bottom:6px;font-size:.9em">"Silm" Kavramı</h5>
+        <ul style="padding-left:16px;font-size:.88em;line-height:1.8">
+          <li>Uzlaşma, teslimiyet, itaat</li>
+          <li>Bir insanın diğerinden zarar görmemesi</li>
+          <li>İki tarafın birbirine güvenmesi</li>
+          <li>"İslam" anlamında kullanılmıştır</li>
+        </ul>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:12px">
+        <h5 style="color:#4a148c;margin-bottom:6px;font-size:.9em">Mesaj</h5>
+        <ul style="padding-left:16px;font-size:.88em;line-height:1.8">
+          <li>İslam'ın gereklerini eksiksiz yerine getir</li>
+          <li>Şeytanın kışkırtmalarına uyma</li>
+          <li>İnsanlara düşmanca duygular besleme</li>
+          <li>Fitne ve fesat çıkarma</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLASH KARTLAR -->
+<div style="background:linear-gradient(90deg,#065f46,#14b8a6);color:white;padding:14px 24px;border-radius:10px;margin:22px 0 12px;font-size:1.1em;font-weight:bold">🃏 Flash Kartlar — Hızlı Tekrar</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:14px 0" id="dinFlashGrid"></div>
+<style>
+#dinFlashGrid .flash-inner, #felFlashGrid .flash-inner {
+  position:relative;width:100%;height:100%;min-height:150px;
+  transition:transform .5s;transform-style:preserve-3d;
+}
+#dinFlashGrid .flash-card, #felFlashGrid .flash-card {
+  background:white;border-radius:12px;padding:0;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  border:1px solid #dee2e6;
+  min-height:150px;cursor:pointer;
+  perspective:600px;
+}
+#dinFlashGrid .flash-card.flipped .flash-inner,
+#felFlashGrid .flash-card.flipped .flash-inner {transform:rotateY(180deg)}
+#dinFlashGrid .flash-front, #dinFlashGrid .flash-back,
+#felFlashGrid .flash-front, #felFlashGrid .flash-back {
+  position:absolute;inset:0;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:12px;padding:18px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+</style>
+
+<!-- ÖZET -->
+<div style="background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border-left:8px solid #14b8a6;border-radius:12px;padding:22px;margin-top:24px">
+  <h3 style="color:#065f46;margin-bottom:16px">🎯 Son Tekrar — En Önemli Bilgiler</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:.9em">
+    <div>
+      <h4 style="color:#14b8a6;border-bottom:1px dotted #6ee7b7;padding-bottom:4px;margin-bottom:8px">Tevhit + Adalet</h4>
+      <ul style="padding-left:18px;line-height:1.9">
+        <li>Tevhit = İslam'ın temel ilkesi; 3 boyutu var</li>
+        <li>Şirk = Allah'a ortak koşmak (en büyük günah)</li>
+        <li>Tüm peygamberlerin ortak mesajı tevhittir</li>
+        <li>Adl = Allah'ın ismi; adalet manası taşır</li>
+        <li>Adaletin 10 ilkesi (Eşitlik, Liyakat vb.)</li>
+        <li>Veda Hutbesi: Üstünlük sadece takva ile</li>
+        <li>Nisa 58: Emaneti ehline ver + adaletle hükmet</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color:#14b8a6;border-bottom:1px dotted #6ee7b7;padding-bottom:4px;margin-bottom:8px">Barış + Kur'an Mesajları</h4>
+      <ul style="padding-left:18px;line-height:1.9">
+        <li>İslam = S-L-M kökü = barış ve esenlik</li>
+        <li>Büyük cihat = nefisle mücadele</li>
+        <li>Küçük cihat = zorunlu hâlde vatan savunması</li>
+        <li>Medine Vesikası = birlikte yaşama modeli</li>
+        <li>Nahl 90: Adalet + İhsan + Akrabaya yardım EMREDILDI; Fahşa + Münker + Bağy YASAKLANDI</li>
+        <li>Bakara 208: "Silm" = İslam = topluca barışa girin</li>
+        <li>İhsan = Allah'ı görür gibi ibadet etmek</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- container sonu -->
+</div>
 </div>
 
 <!-- ══════════════════════════════════════
@@ -3131,6 +3443,8 @@ function goPage(id){
   if(id==='ana') runAnaScript();
   if(id==='bio') runBioScript();
   if(id==='cog') runCogScript();
+  if(id==='fel') runFelScript();
+  if(id==='din') runDinScript();
 }
 
 // ── ANA SAYFA SCRIPT ──
@@ -3147,11 +3461,11 @@ const subjects = [
     color:'#22c55e',
     glow:'rgba(34,197,94,0.08)',
     bg:'rgba(34,197,94,0.12)',
-    date:'25 Mart 2026',
+    date:'23 Mart 2026',
     time:'10:10',
     topics:['Enerji-Metabolizma','Ekosistemin Bileşenleri','Komünitelerde Etkileşim','Popülasyon Dinamikleri'],
     status:'ready',
-    sorular:'4 ders × detaylı',
+    sorular:'4 ünite × detaylı',
     file:'bio'
   },
   {
@@ -3166,6 +3480,32 @@ const subjects = [
     status:'ready',
     sorular:'2 ünite detaylı',
     file:'cog'
+  },
+  {
+    name:'Felsefe',
+    emoji:'🤔',
+    color:'#a78bfa',
+    glow:'rgba(167,139,250,0.08)',
+    bg:'rgba(167,139,250,0.12)',
+    date:'25 Mart 2026',
+    time:'11:40',
+    topics:['Bilgi Felsefesi','Bilginin Kaynağı & İmkânı','Doğruluk Ölçütleri','Ahlak & Estetik Felsefesi'],
+    status:'ready',
+    sorular:'4 konu × detaylı',
+    file:'fel'
+  },
+  {
+    name:'Din Kültürü ve A.B.',
+    emoji:'☪️',
+    color:'#14b8a6',
+    glow:'rgba(20,184,166,0.08)',
+    bg:'rgba(20,184,166,0.12)',
+    date:'25 Mart 2026',
+    time:'9:20',
+    topics:["İslam'ın Tevhit İlkesi","Adalet ve Eşitlik","İslam ve Barış","Kur'an'dan Mesajlar"],
+    status:'ready',
+    sorular:'4 konu × detaylı',
+    file:'din'
   },
   {
     name:'Tarih',
@@ -3194,38 +3534,12 @@ const subjects = [
     file:null
   },
   {
-    name:'Din Kültürü',
-    emoji:'☪️',
-    color:'#14b8a6',
-    glow:'rgba(20,184,166,0.08)',
-    bg:'rgba(20,184,166,0.12)',
-    date:'25 Mart 2026',
-    time:'9:20',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-  {
-    name:'Felsefe',
-    emoji:'🤔',
-    color:'#a78bfa',
-    glow:'rgba(167,139,250,0.08)',
-    bg:'rgba(167,139,250,0.12)',
-    date:'25 Mart 2026',
-    time:'9:20',
-    topics:['2. Dönem konuları'],
-    status:'soon',
-    sorular:'Yakında',
-    file:null
-  },
-  {
     name:'Matematik',
     emoji:'🔢',
     color:'#f97316',
     glow:'rgba(249,115,22,0.08)',
     bg:'rgba(249,115,22,0.12)',
-    date:'1 Nisan 2026',
+    date:'9 Nisan 2026',
     time:'11:40',
     topics:['2. Dönem konuları'],
     status:'soon',
@@ -3265,7 +3579,7 @@ const subjects = [
     glow:'rgba(244,63,94,0.08)',
     bg:'rgba(244,63,94,0.12)',
     date:'1 Nisan 2026',
-    time:'10:10',
+    time:'11:40',
     topics:['2. Dönem konuları'],
     status:'soon',
     sorular:'Yakında',
@@ -3287,16 +3601,16 @@ const subjects = [
 ];
 
 const examSchedule = [
+  {date:'23 Mart 2026', time:'10:10', subject:'Biyoloji',             color:'#22c55e'},
   {date:'24 Mart 2026', time:'9:20',  subject:'Coğrafya',             color:'#3b82f6'},
-  {date:'25 Mart 2026', time:'10:10', subject:'Biyoloji',             color:'#22c55e'},
   {date:'25 Mart 2026', time:'9:20',  subject:'Din Kültürü',          color:'#14b8a6'},
-  {date:'25 Mart 2026', time:'9:20',  subject:'Felsefe',              color:'#a78bfa'},
+  {date:'25 Mart 2026', time:'11:40', subject:'Felsefe',              color:'#a78bfa'},
   {date:'26 Mart 2026', time:'9:20',  subject:'Tarih',                color:'#f59e0b'},
   {date:'27 Mart 2026', time:'9:20',  subject:'Sağlık Bilgisi',       color:'#84cc16'},
   {date:'30 Mart 2026', time:'10:10', subject:'Fizik',                color:'#06b6d4'},
   {date:'31 Mart 2026', time:'10:10', subject:'Kimya',                color:'#10b981'},
-  {date:'1 Nisan 2026', time:'10:10', subject:'İngilizce',            color:'#f43f5e'},
-  {date:'1 Nisan 2026', time:'11:40', subject:'Matematik',            color:'#f97316'},
+  {date:'1 Nisan 2026', time:'11:40', subject:'İngilizce',            color:'#f43f5e'},
+  {date:'9 Nisan 2026', time:'11:40', subject:'Matematik',            color:'#f97316'},
   {date:'10 Nisan 2026',time:'0:00',  subject:'Türk Dili ve Edebiyatı',color:'#ec4899'},
 ];
 
@@ -3426,7 +3740,7 @@ function runCogScript(){
   if(document.getElementById('flashGrid2') && document.getElementById('flashGrid2').children.length > 0) return;
   
 // Flash cards data
-const cards = [
+const cogFlashCards = [
   {q:"Zonguldak'ta hangi fonksiyon baskındır?", a:"Madencilik fonksiyonu (Kömür üretimi — Ereğli)"},
   {q:"Eskişehir'de hâkim fonksiyon nedir?", a:"Eğitim ve kültürel fonksiyon + Turizm (Üniversiteler + rekreasyon alanları)"},
   {q:"Köy nüfusu kaçın altında olmalıdır?", a:"2.000'den az nüfus"},
@@ -3444,8 +3758,8 @@ const cards = [
   {q:"Adana'nın fonksiyonel dönüşümü nasıl gerçekleşti?", a:"Tarım → Sanayi → Ticaret → Eğitim/Sağlık/Ulaşım → Çok fonksiyonlu büyük il merkezi"},
 ];
 
-const grid = document.getElementById('flashGrid2');
-cards.forEach((c,i) => {
+const cogFlashGrid = document.getElementById('flashGrid2');
+cogFlashCards.forEach((c,i) => {
   const el = document.createElement('div');
   el.className = 'flash-card';
   el.innerHTML = `<div class="flash-inner">
@@ -3460,19 +3774,110 @@ cards.forEach((c,i) => {
     </div>
   </div>`;
   el.addEventListener('click',()=>el.classList.toggle('flipped'));
-  grid.appendChild(el);
+  cogFlashGrid.appendChild(el);
 });
 
-// Accordion (eğer eklenirse)
-document.querySelectorAll('.acc-header').forEach(h=>{
-  h.addEventListener('click',()=>{
-    h.classList.toggle('open');
-    const body=h.nextElementSibling;
-    body.classList.toggle('open');
+}
+
+// ── FELSEFEe SCRIPT ──
+function runFelScript(){
+  if(document.getElementById('felFlashGrid') && document.getElementById('felFlashGrid').children.length > 0) return;
+  const felCards = [
+    {q:"Bilgi felsefesinin Türkçe karşılığı nedir?", a:"Epistemoloji"},
+    {q:"Bilgi felsefesinin temel sorusu nedir?", a:"'Bilgi nedir?' — aynı zamanda 'Bilgiye nasıl ulaşılır?' ve 'Bilgi mümkün mü?'"},
+    {q:"Septisizm (Şüphecilik) ne savunur?", a:"Kesin ve nesnel bilginin mümkün olmadığını — duyular ve akıl güvenilmezdir"},
+    {q:"Dogmatizm ne savunur?", a:"İnsanın kesin ve evrensel bilgiye ulaşabileceğini (Sokrates, Platon, Aristoteles)"},
+    {q:"Gorgias'ın üç tezi nelerdir?", a:"1) Varlık yoktur, 2) Olsa bile bilinemez, 3) Bilinse bile aktarılamaz"},
+    {q:"Pyrrhon'un 'epokhe' kavramı ne anlama gelir?", a:"Yargıdan kaçınma — doğruyu belirleyecek ölçüt olmadığı için yargıdan uzak durmak"},
+    {q:"Platon'a göre bilgi (episteme) ile sanı (doksa) farkı nedir?", a:"Bilgi (episteme): idealara ait, doğru, akılla elde edilir. Sanı (doksa): maddi varlıklara dair, duyuyla elde edilir, kesin değil"},
+    {q:"Rasyonalizmin temel iddiası nedir?", a:"Bilginin kaynağı akıldır; duyular yanıltıcıdır; apriori bilgiler vardır"},
+    {q:"Empirizmin temel iddiası nedir?", a:"Bilginin kaynağı duyu ve deneyimdir; zihin doğuşta boş levhadır (J. Locke)"},
+    {q:"Kritisizmi kim savunmuştur?", a:"Immanuel Kant — rasyonalizm ve empirizmi eleştirerek ikisini birleştirir"},
+    {q:"Kant'ın ünlü sözü nedir?", a:"'Görüsüz kavramlar boş, kavramsız görüler kördür'"},
+    {q:"Entüisyonizm (Sezgicilik) ne savunur?", a:"Bilginin kaynağı sezgidir; H. Bergson — bilimsel bilgi (akıl) + mutlak bilgi (sezgi)"},
+    {q:"Uygunluk (Korrespondans) doğruluk teorisi nedir?", a:"Bilginin gerçeklikle örtüşmesi — bilgi gerçeğe uygunsa doğrudur"},
+    {q:"Tutarlılık doğruluk teorisi nedir?", a:"Bilginin diğer bilgilerle çelişmemesi, mantıksal tutarlılık"},
+    {q:"Tümel uzlaşım teorisi nedir?", a:"Uzmanların ve toplumun genel kabul ettiği bilgi doğrudur"},
+    {q:"Yarar (Pragmatist) doğruluk teorisi nedir?", a:"Pratikte yararlı olan ve işe yarayan bilgi doğrudur"},
+    {q:"Descartes'ın şüphe yönteminin amacı nedir?", a:"Şüpheyi araç olarak kullanarak kesin bilgiye ulaşmak — 'Düşünüyorum öyleyse varım'"},
+    {q:"Descartes'ı septiklerden ayıran özellik nedir?", a:"Şüpheyi sonuç olarak değil, araç olarak kullanması; bir kez kanıtladığı bilgiden asla şüphe etmemesi"},
+    {q:"Ahlak felsefesinin temel sorusu nedir?", a:"'İyi nedir?' — aynı zamanda evrensel ahlak yasası var mı, insan özgür mü?"},
+    {q:"Sokrates'e göre kötülüğün nedeni nedir?", a:"Bilgisizlik — insan bilerek kötülük yapmaz; iyiyi bilen iyi davranır"},
+    {q:"Kant'ın ahlak anlayışında temel kavram nedir?", a:"Ödev (vazife) — iyi niyetle, çıkar beklemeden, evrensel yasaya uygun eylem"},
+    {q:"Faydacılık (Utilitarizm) ne savunur?", a:"En çok sayıda insana en büyük mutluluğu sağlayan eylem iyidir (J. S. Mill)"},
+    {q:"Evrensel ahlak yasasının var olmadığını kim savunur?", a:"Epiküros, T. Hobbes, M. Stirner, J. Bentham — değerler kişiden kişiye değişir"},
+    {q:"Determinizm (belirlenimcilik) ne savunur?", a:"Her olay neden-sonuç zincirine bağlı; insan özgür değil; eylemlerinden sorumlu tutulamaz"},
+    {q:"İndeterminizm (özgürlükçülük) ne savunur?", a:"Evrende rastlantısallık var; özgür irade mümkündür; insan eylemlerinden sorumludur"},
+    {q:"Estetik nedir?", a:"Doğadaki ve sanat eserlerindeki güzelliği konu edinen felsefi alan"},
+    {q:"Platon'a göre sanat nedir?", a:"İdeaların kopyası olan doğanın bir kez daha kopyalanması — hakikatten uzaklaştırır"},
+    {q:"Ortak estetik yargıların mümkün olduğunu kim savunur?", a:"Platon (güzel ideası), I. Kant (güzel çıkarsız hoşa gidendir), A. Baumgarten"},
+    {q:"B. Croce'nin estetik görüşü nedir?", a:"Güzellik izleyenin gözündedir; sezginin ifadesidir; estetik yargılar tamamen özneldir"},
+  ];
+  const felGrid = document.getElementById('felFlashGrid');
+  if(!felGrid) return;
+  felCards.forEach((c,i) => {
+    const el = document.createElement('div');
+    el.className = 'flash-card';
+    el.innerHTML = `<div class="flash-inner">
+      <div class="flash-front" style="background:white">
+        <div class="flash-label" style="font-size:.75em;font-weight:700;letter-spacing:.5px;color:#a78bfa;margin-bottom:8px;text-transform:uppercase">Soru ${i+1}</div>
+        <div class="flash-q" style="font-size:.95em;font-weight:600;color:#1a1a2e;line-height:1.4">${c.q}</div>
+        <div class="flash-hint" style="font-size:.75em;color:#aaa;margin-top:8px;text-align:right">👆 Cevap için tıkla</div>
+      </div>
+      <div class="flash-back" style="background:#2d1b69;color:white;transform:rotateY(180deg)">
+        <div class="flash-label" style="font-size:.75em;font-weight:700;letter-spacing:.5px;color:rgba(167,139,250,0.8);margin-bottom:8px;text-transform:uppercase">Cevap ${i+1}</div>
+        <div class="flash-q" style="color:white;font-weight:400;font-size:.9em;line-height:1.5">${c.a}</div>
+      </div>
+    </div>`;
+    el.addEventListener('click',()=>el.classList.toggle('flipped'));
+    felGrid.appendChild(el);
   });
-});
+}
 
-
+// ── DİN KÜLTÜRÜ SCRIPT ──
+function runDinScript(){
+  if(document.getElementById('dinFlashGrid') && document.getElementById('dinFlashGrid').children.length > 0) return;
+  const dinCards = [
+    {q:"Tevhit ilkesi ne anlama gelir?", a:"Allah'ın bir ve tek olduğuna inanmak; zatında, sıfatlarında, fiillerinde eş ve ortağının olmadığını bilmek"},
+    {q:"Tevhidin zıttı olan kavram nedir?", a:"Şirk — Allah'a başka varlıkları ortak/denk görmek"},
+    {q:"Tevhit ilkesinin üç boyutu nelerdir?", a:"1) Allah'ın Rab olduğuna inanmak, 2) İbadetleri sadece Allah için yapmak, 3) Allah'ın isim ve sıfatlarını yalnız O'na özgü kabul etmek"},
+    {q:"'Adl' ismi Allah'a göre ne anlama gelir?", a:"Allah'ın adil olması; her varlığa yaratılışına uygun imkân, nimet ve ihsan vermesi"},
+    {q:"İslam'da adaletin beş temel ilkesi nelerdir?", a:"Eşitlik, Hesap Verebilirlik, Tarafsızlık, Şeffaflık, Liyakat"},
+    {q:"Liyakat ilkesi ne demektir?", a:"Görev ve sorumlulukların ehil kişilere verilmesi; yeterlilik ilkesi"},
+    {q:"Hakkaniyet nedir?", a:"Görev/sorumluluk paylaşımında bireysel farklılıklara özen göstererek sadece hakkı olana razı olma"},
+    {q:"Ahde vefa nedir?", a:"Allah'a ve insanlara verilen sözün yerine getirilmesi; anlaşmalara sadık kalma"},
+    {q:"Veda Hutbesi'nde vurgulanan temel ilke nedir?", a:"'Üstünlük ancak takva iledir' — ırk, renk, dil farkının insana üstünlük sağlamadığı"},
+    {q:"İslam kelimesinin kökü ve anlamı nedir?", a:"S-L-M kökünden — kurtuluşa erme, güven, emniyet, sulh ve barış yapma anlamına gelir"},
+    {q:"Cihat kavramının iki ana anlamı nedir?", a:"1) Maddi cihad: vatan, din, namus savunması. 2) Nefisle cihad (büyük cihat): kötü duygulara karşı mücadele"},
+    {q:"Küçük cihat ve büyük cihat farkı nedir?", a:"Küçük cihat: cephede düşmanla savaş. Büyük cihat: kişinin kendi nefsiyle mücadelesi"},
+    {q:"Nahl suresi 90. ayette emredilen üç değer nedir?", a:"Adalet (adl), iyilik yapma (ihsan), akrabaya yardım etmek (iyta-i zil kurbâ)"},
+    {q:"Nahl suresi 90. ayette yasaklanan üç şey nedir?", a:"Fahşâ (hayasızlık), münker (kötülük), bağy (zorbalık/haddi aşma)"},
+    {q:"Nisa suresi 58. ayetin nüzul sebebi nedir?", a:"Hz. Muhammed'in Mekke fethinden sonra Kabe anahtarını Osman bin Talha'ya iade etmesi — emanetin ehline verilmesi"},
+    {q:"Bakara suresi 208. ayette geçen 'silm' kavramı ne anlama gelir?", a:"Uzlaşma, teslimiyet, itaat, barış — 'İslam' anlamında kullanılmıştır"},
+    {q:"Emanet kavramı İslam'a göre neleri kapsar?", a:"Din, sahip olunan ilim, anlaşma ve sözleşmeler, insana verilen nimetler, kamu malları"},
+    {q:"İslam'ın evrensel mesajlarından dört tanesi nedir?", a:"Tevhit ilkesi, adalet ve eşitlik, barış, Kur'an'ın ahlaki emirleri (Nahl 90, Nisa 58, Bakara 208)"},
+    {q:"Takva nedir?", a:"Müslüman olarak her an sorumluluğun bilincinde olma; farzları yerine getirme; haramlardan ve şüphelilerden kaçınma"},
+    {q:"İhsan kavramı ne anlama gelir?", a:"Allah'ı görür gibi ibadet etmek; başkasına iyilik etmek; yaptığını güzel yapmak"},
+  ];
+  const dinGrid = document.getElementById('dinFlashGrid');
+  if(!dinGrid) return;
+  dinCards.forEach((c,i) => {
+    const el = document.createElement('div');
+    el.className = 'flash-card';
+    el.innerHTML = `<div class="flash-inner">
+      <div class="flash-front" style="background:white">
+        <div class="flash-label" style="font-size:.75em;font-weight:700;letter-spacing:.5px;color:#14b8a6;margin-bottom:8px;text-transform:uppercase">Soru ${i+1}</div>
+        <div class="flash-q" style="font-size:.95em;font-weight:600;color:#1a1a2e;line-height:1.4">${c.q}</div>
+        <div class="flash-hint" style="font-size:.75em;color:#aaa;margin-top:8px;text-align:right">👆 Cevap için tıkla</div>
+      </div>
+      <div class="flash-back" style="background:#064e45;color:white;transform:rotateY(180deg)">
+        <div class="flash-label" style="font-size:.75em;font-weight:700;letter-spacing:.5px;color:rgba(20,184,166,0.8);margin-bottom:8px;text-transform:uppercase">Cevap ${i+1}</div>
+        <div class="flash-q" style="color:white;font-weight:400;font-size:.9em;line-height:1.5">${c.a}</div>
+      </div>
+    </div>`;
+    el.addEventListener('click',()=>el.classList.toggle('flipped'));
+    dinGrid.appendChild(el);
+  });
 }
 
 // ── Modal helpers (global) ──
